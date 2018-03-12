@@ -10,7 +10,7 @@ gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
-gem 'turbolinks',
+gem 'turbolinks'
 gem 'jbuilder'
 gem 'will_paginate-bootstrap'
 gem 'bootstrap-sass'
