@@ -9,6 +9,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postalcode %><br />
+    <%= f.text_field :postalcode, autocomplete: "postalcode" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
