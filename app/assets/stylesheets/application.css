@@ -11,5 +11,17 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require animate.css
+ *= require cubeportfolio.min.css
+ *= require flexslider.css
+ *= require font-awesome.min.css
+ *= require home.scss
+ *= require owl.carousel.css
+ *= require owl.theme.default.css
+ *= require rev-style.css
+ *= require settings.css
+ *= require style.css
+ *= require pe-icon-7-stroke.css
+ *= require yamm.css
  *= require_self
  */
