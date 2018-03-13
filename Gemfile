@@ -21,7 +21,6 @@ gem 'bootswatch'
 gem 'devise'
 gem 'jquery'
 #gem 'pg', '0.20.0'
-gem 'sqlite3'
 gem 'stripe'
 gem 'mailjet'
 gem 'dotenv'
@@ -36,6 +35,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'web-console'
   gem 'listen'
