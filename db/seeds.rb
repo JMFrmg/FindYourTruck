@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(email:"jean.bernard@gmail.com", username:"jeanbernard", postalcode:"67000", password:"jeanbernard", password_confirmation:"jeanbernard")
+User.create(email:"alfred.duverger@gmail.com", username:"alfred", postalcode:"67000", password:"alfredduverger", password_confirmation:"alfredduverger")
+User.create(email:"xavier.leboucher@gmail.com", username:"xavier", postalcode:"67000", password:"xavierleboucher", password_confirmation:"xavierleboucher")
+User.create(email:"edouard.lachaise@gmail.com", username:"edouard", postalcode:"67000", password:"edouardlachaise", password_confirmation:"edouardlachaise")
+
+Foodtrucker.create(email:"simon.pierre@gmail.com", username:"simonpierre", postalcode:"67000", password:"simonpierre", password_confirmation:"simonpierre")
+Foodtrucker.create(email:"jacques.le.majeur@gmail.com", username:"jacqueslemajeur", postalcode:"67000", password:"jacqueslemajeur", password_confirmation:"jacqueslemajeur")
+Foodtrucker.create(email:"philippe@gmail.com", username:"philippe", postalcode:"67000", password:"philippe", password_confirmation:"philippe")
+Foodtrucker.create(email:"simon.le.zelote@gmail.com", username:"simonlezelote", postalcode:"67000", password:"simonlezelote", password_confirmation:"simonlezelote")
+
+Admin.create(email:"matthieu.colombert@gmail.com", username:"matthieu", postalcode:"67000", password:"matthieu", password_confirmation:"matthieu")
+
+Menu.create(description:"Burgers aux steaks de sauterelles accompagnes d'algues frites", foodtrucker_id:"1")
+Menu.create(description:"Liqueurs de meduses et cuvee speciale au venin de scorpion", foodtrucker_id:"2")
+Menu.create(description:"Harengs farcis et creme de norvege", foodtrucker_id:"3")
+Menu.create(description:"Sandwichs mayonnaise saucisson accompagnes de chips", foodtrucker_id:"4")
+
+
+Dish.create(name:"Liqueur de prunes au venin de mygales", menu_id:"2")
+Dish.create(name:"Liqueur de figues au crapeau buffle", menu_id:"2")
+Dish.create(name:"Liqueur de poisson-lion", menu_id:"2")
+Dish.create(name:"Sandwich mortadelle et mayo basilic", menu_id:"4")
+Dish.create(name:"Sandwich rosette et mayo poivree", menu_id:"4")
+Dish.create(name:"Sandwich rosette et mayo classique", menu_id:"4")
