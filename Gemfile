@@ -24,6 +24,7 @@ gem 'jquery'
 gem 'stripe'
 gem 'mailjet'
 gem 'dotenv'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
