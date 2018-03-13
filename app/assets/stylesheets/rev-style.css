@@ -1,5 +1,5 @@
 
-/* 
+/*
     Created on : 29 Jan, 2015, 7:06:48 AM
     Author     : Design_mylife
     Purpose    : Revolution slider css
@@ -36,7 +36,7 @@
     color:#333;
 }
 .tp-caption.modern_big_redbg{
-      font-family: 'Open Sans', sans-serif !important; 
+      font-family: 'Open Sans', sans-serif !important;
       font-weight: 300;
 }
 .slider-text-title{
@@ -71,7 +71,7 @@
     color:#fff;
     font-weight:700;
     text-transform: uppercase;
-      font-family: 'Open Sans', sans-serif!important; 
+      font-family: 'Open Sans', sans-serif!important;
 }
 .ken-burns-cap{
     color:#fff;
@@ -83,16 +83,17 @@
 
 /***index page slider****/
 .caption.title-2 {
-color: #fff;
+background-color: #32c5d2;
+color:#fff;
 font-size: 48px;
 line-height: 56px;
 font-weight: 900;
 text-transform: uppercase;
- font-family: 'Raleway', sans-serif;
+font-family: 'Raleway', sans-serif;
 }
 .caption.text{
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 800;
     color:#fff;
      font-family: 'Open Sans', sans-serif;
 }
@@ -153,7 +154,7 @@ font-family: 'Open Sans', sans-serif;
     font-family: 'Open Sans', sans-serif;
 }
 .modern_big_bluebg{
- font-family: 'Open Sans', sans-serif !important;  
+ font-family: 'Open Sans', sans-serif !important;
  text-transform: uppercase;
 }
 
