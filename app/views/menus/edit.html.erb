@@ -1,0 +1,25 @@
+<h1>Modifier votre menu</h1>
+
+
+<%= form_with(model: @menu, local: true) do |form| %>
+
+
+
+ <p>
+   <%= form.label :description %><br />
+   <%= form.text_area :description %>
+ </p>
+
+ <p>
+   <%= form.label :image %><br />
+   <%= form.text_area :image %>
+ </p>
+
+ <p>
+   <%= form.submit %>
+</p>
+  
+ 
+ 
+
+<% end %>
