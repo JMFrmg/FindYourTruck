@@ -1,0 +1,27 @@
+<h1>Créer menu</h1>
+<p> </p>
+<%= form_tag (menus_path) do %>
+
+ 
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@menu.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @menu.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <%= label_tag 'text', 'Description :' %>
+  <%= text_field_tag 'description' %>
+  <%= submit_tag 'Enregistrer le menu' %>
+
+  
+<% end %>
+
