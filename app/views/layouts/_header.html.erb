@@ -11,45 +11,19 @@
                         <i class="fa fa-twitter"></i>
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a href="#" class="social-icon-sm si-dark si-gray-round si-colored-google-plus">
-                        <i class="fa fa-google-plus"></i>
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a href="#" class="social-icon-sm si-dark si-gray-round si-colored-linkedin">
-                        <i class="fa fa-linkedin"></i>
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-icon-sm si-dark si-gray-round si-colored-google-plus">
-                        <i class="fa fa-youtube"></i>
-                        <i class="fa fa-youtube"></i>
-                    </a>
-                    <a href="#" class="social-icon-sm si-dark si-gray-round si-colored-dribbble">
-                        <i class="fa fa-dribbble"></i>
-                        <i class="fa fa-dribbble"></i>
-                    </a>
                 </div>
             </div>
             <div class="col-sm-8 text-right">
                 <ul class="list-inline top-dark-right">
-                    <li class="hidden-sm hidden-xs"><i class="fa fa-envelope"></i> Support@mail.com</li>
-                    <li class="hidden-sm hidden-xs"><i class="fa fa-phone"></i> +01 1800 453 7678</li>
-                    <li><%= link_to "Home",         root_path %></li>
+                    <li><%= link_to "Accueil",         root_path %></li>
                     <% if user_signed_in? %>
-                    <li><%= link_to "Profile", edit_user_registration_path %></li>
+                    <li><%= link_to "Profil", edit_user_registration_path %></li>
                     <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
                     <% else %>
                     <li><%= link_to content_tag(:i, nil, class: 'fa fa-lock') + " Connexion ", new_user_session_path %></li>
                     <li><%= link_to content_tag(:i, nil, class: 'fa fa-user') + " S'inscrire ", new_user_registration_path %></li></li>
                     <% end %>
-                    <li><a class="topbar-icons" href="#"><span><i class="fa fa-search top-search"></i></span></a></li>
-                </ul> 
-                <div class="search">
-                    <form role="form">
-                        <input type="text" class="form-control" autocomplete="off" placeholder="Write something and press enter">
-                        <span class="search-close"><i class="fa fa-times"></i></span>
-                    </form>
-                </div>
-
+                </ul>
             </div>
         </div>
     </div>
