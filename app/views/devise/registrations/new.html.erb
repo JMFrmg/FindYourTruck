@@ -13,33 +13,35 @@
       <div class="divide80"></div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="col-md-5">
+                   
                     <form>
                                     <div class="form-group">
                                       <i class="icon-append fa fa-user"></i>
                                       <%= f.label "Nom d'utilisateur" %>
-                                      <%= f.text_field :username, autocomplete: "username", placeholder: "Entrez votre nom d'utilisateur", class: "form-control" %>                           
+                                      <%= f.text_field :username, autocomplete: "username", placeholder: "ex: Edouard", class: "form-control" %>                           
                                     </div>
 
                                     <div class="form-group">
+                                      <i class="icon-append fa fa-envelope-o"></i>
                                       <%= f.label "Email" %>
-                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Indiquez votre adresse mail", class: "form-control" %>
+                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "ex: Edouard_duMuguet@hotmail.com", class: "form-control" %>
                                     </div>
 
                                     <div class="form-group">
+                                      <i class="icon-append fa fa-compass"></i>
                                       <%= f.label "Code postal" %>
-                                      <%= f.text_field :Postalcode, autocomplete: "postalcode", placeholder: "Votre code postal ", class: "form-control"  %>
+                                      <%= f.text_field :postalcode, autocomplete: "postalcode", placeholder: "ex: 67000 ", class: "form-control"  %>
                                     </div>
 
                                     <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
                                       <%= f.label "Mot de passe" %>
-                                      <% if @minimum_password_length %>
-                                      <em>(<%= @minimum_password_length %> caractères minimum)</em>
-                                      <% end %>
-                                      <%= f.password_field :password, autocomplete: "off", placeholder: "Mot de passe... ", class: "form-control" %>   
+                                      <%= f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length} caractères minimum", class: "form-control" %>   
                                     </div>  
 
                                     <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
                                       <%= f.label "Confirmation du mot de passe" %>
                                       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmez votre mot de passe ", class: "form-control" %>
                                     </div> 
@@ -50,15 +52,31 @@
                                     <div class="clearfix"></div>
                                       
                                     <% end %>
-                                    Vous avez déjà un compte?
-                                    <%= link_to "Connectez-vous", new_user_session_path, class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF' %>
                                     
                                 </form>
-                                
+                              
                             </div><!--register tab end-->
+                      <div class="col-md-3"></div>
+                      <div class="col-md-4">
+                        <div class="divide80"></div>
+                        <div class="login-form center">
 
+
+                        <h3>J'ai déjà un compte!</h3>
+
+                        <br>
+                      
+                          <%= link_to "Connectez-vous", new_user_session_path, class: "btn btn-theme-dark btn-sm",style:'color:#FFFFFF' %>
+                                            </div>
+
+                      
+                          </div>
                         </div>
                       </div>
+                    
+
+
+
                       <div class="divide80"></div>
   <div class="breadcrumb-wrap">
   </div>
