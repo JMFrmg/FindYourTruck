@@ -19,7 +19,24 @@
    <%= form.submit %>
 </p>
   
- 
- 
-
 <% end %>
+
+<table>
+	<tr>
+		<th>Nom du plat</th>
+		<th>Composition</th>
+	</tr>
+	<% @dishes.each do |dish| %>
+	<tr>
+		<td><%= dish.name %></td>
+		<td><%= dish.composition %></td>
+		<td><%= link_to 'Modifier le plat', edit_dish_path(dish) %></td>
+		<td><%= link_to 'Supprimer le plat', dish_path,
+			  method: :delete,
+			  data: { confirm: "Supprimer le plat?" } %></td>
+		
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to "Ajouter un plat", new_dish_path %>

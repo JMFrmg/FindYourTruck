@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   		devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :postalcode])
   end
 
+  def current_menu
+      current_foodtrucker.menu
+  end
+
     protected
 
     def configure_permitted_parameters

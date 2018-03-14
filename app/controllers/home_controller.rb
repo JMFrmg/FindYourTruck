@@ -4,7 +4,8 @@ class HomeController < ApplicationController
   end
 
   def show
+    @foodtrucker = Foodtrucker.find(params[:id])
+  	@menu = @foodtrucker.menu
+  	@dishes = @menu.dishes
   end
-
-
 end

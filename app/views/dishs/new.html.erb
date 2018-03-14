@@ -1,0 +1,33 @@
+<h1>Créer un nouveau plat</h1>
+<p> </p>
+<%= form_tag (dishs_path) do %>
+
+ 
+  <% if @dish.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@dish.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @dish.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <%= label_tag 'text', 'Nom du plat :' %>
+  <%= text_field_tag 'name' %>
+
+  <%= label_tag 'text', 'Composition du plat :' %>
+  <%= text_field_tag 'composition' %>
+
+  <%= submit_tag 'Créer un nouveau plat' %>
+<% end %>
+
+<p>
+<br />
+<%= link_to "Retour à l'édition du menu", edit_menu_path(@menu) %>
+</p>
