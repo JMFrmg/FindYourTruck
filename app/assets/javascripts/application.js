@@ -31,4 +31,5 @@
 //= require jquery.cubeportfolio.min
 //= require cube-portfolio
 //= require pace.min
+//= require jquery_ujs
 //= require_tree .
