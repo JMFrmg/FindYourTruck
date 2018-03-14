@@ -1,5 +1,18 @@
 <h1>Votre menu</h1>
 <p>Description du menu : <%= @menu.description %></p>
 <p>Image du menu : <%= @menu.image %></p>
+<table>
+	<tr>
+		<th>Nom du plat</th>
+		<th>Composition</th>
+	</tr>
+	<% @dishes.each do |dish| %>
+	<tr>
+		<td><%= dish.name %></td>
+		<td><%= dish.composition %></td>
+		
+	</tr>
+	<% end %>
+</table>
 <p><%= link_to 'Modifier le menu', edit_menu_path %></p>
 

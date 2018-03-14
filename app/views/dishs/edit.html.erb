@@ -1,0 +1,22 @@
+<h1>Modifier le plat</h1>
+
+
+<%= form_tag  dish_path(@dish), method: :put do %>
+
+ <p>
+   <%= label_tag "name", "Nom du plat : " %><br />
+   <%= text_field_tag "name" %>
+ </p>
+ <p>
+   <%= label_tag "composition", "Contenu du plat : " %><br />
+   <%= text_field_tag "composition" %>
+ </p>
+ <p>
+   <%= submit_tag "Modifier le plat" %>
+</p>
+
+<% end %>
+
+<p>
+   <%= link_to 'Supprimer le plat', @dish, method: :delete %>
+ </p>
