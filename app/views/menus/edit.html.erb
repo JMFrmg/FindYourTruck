@@ -31,8 +31,9 @@
 		<td><%= dish.name %></td>
 		<td><%= dish.composition %></td>
 		<td><%= link_to 'Modifier le plat', edit_dish_path(dish) %></td>
+		<td><%= button_to "delete", dish_path(dish), :method => "delete" %></td>
 		<td><%= link_to 'Supprimer le plat', dish_path,
-			  method: :delete,
+			  :method => :delete,
 			  data: { confirm: "Supprimer le plat?" } %></td>
 		
 	</tr>
