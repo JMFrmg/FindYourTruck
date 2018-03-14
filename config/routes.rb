@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
 
   devise_for :foodtruckers
   devise_for :admins
@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :menus
   resources :dishs
+
+  get '/show', to: 'home#show'
 
 end
