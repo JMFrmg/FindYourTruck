@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
+  get 'home/show/:id(.:format)', to: 'home#show'
+
   resources :menus
   resources :dishs
 

@@ -1,0 +1,16 @@
+@foodtrucker.username
+@menu.description
+@menu.image
+
+<table>
+	<tr>
+		<th>Nom du plat</th>
+		<th>Composition</th>
+	</tr>
+	<% @dishes.each do |dish| %>
+	<tr>
+		<td><%= dish.name %></td>
+		<td><%= dish.composition %></td>
+	</tr>
+	<% end %>
+</table>
