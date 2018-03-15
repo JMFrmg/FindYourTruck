@@ -35,9 +35,9 @@ Menu.create(description:"Harengs farcis et creme de norvege", foodtrucker_id:"3"
 Menu.create(description:"Sandwichs mayonnaise saucisson accompagnes de chips", foodtrucker_id:"4")
 
 
-Dish.create(name:"Liqueur de prunes au venin de mygales", menu_id:"2")
-Dish.create(name:"Liqueur de figues au crapeau buffle", menu_id:"2")
-Dish.create(name:"Liqueur de poisson-lion", menu_id:"2")
-Dish.create(name:"Sandwich mortadelle et mayo basilic", menu_id:"4")
-Dish.create(name:"Sandwich rosette et mayo poivree", menu_id:"4")
-Dish.create(name:"Sandwich rosette et mayo classique", menu_id:"4")
+Dish.create(name:"Liqueur de prunes au venin de mygales", price:"9", menu_id:"2")
+Dish.create(name:"Liqueur de figues au crapeau buffle", price:"11", menu_id:"2")
+Dish.create(name:"Liqueur de poisson-lion", price:"7", menu_id:"2")
+Dish.create(name:"Sandwich mortadelle et mayo basilic", price:"13.6", menu_id:"4")
+Dish.create(name:"Sandwich rosette et mayo poivree", price:"4,7", menu_id:"4")
+Dish.create(name:"Sandwich rosette et mayo classique", price:"5,8", menu_id:"4")

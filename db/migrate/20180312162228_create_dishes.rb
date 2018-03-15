@@ -4,8 +4,7 @@ class CreateDishes < ActiveRecord::Migration[5.1]
       t.references :menu, foreign_key: true
       t.string :name
       t.string :composition
-
-      t.timestamps
+      t.float :price
     end
   end
 end
