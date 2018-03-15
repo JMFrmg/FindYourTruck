@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
   	@foodtruckers = Foodtrucker.all
+    @streetadresses = Street.all
   end
 
   def show
@@ -8,4 +9,6 @@ class HomeController < ApplicationController
   	@menu = @foodtrucker.menu
   	@dishes = @menu.dishes
   end
+
+  
 end

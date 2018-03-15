@@ -16,6 +16,17 @@ Foodtrucker.create(email:"jacques.le.majeur@gmail.com", username:"jacqueslemajeu
 Foodtrucker.create(email:"philippe@gmail.com", username:"philippe", postalcode:"67000", password:"philippe", password_confirmation:"philippe")
 Foodtrucker.create(email:"simon.le.zelote@gmail.com", username:"simonlezelote", postalcode:"67000", password:"simonlezelote", password_confirmation:"simonlezelote")
 
+Street.create(adress:"7 place Brooglie", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"1")
+Street.create(adress:"12 avenue de la paix", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"1")
+Street.create(adress:"23 rue des Orphelins", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"1")
+Street.create(adress:"8 rue de Rathsamhausen", postalcode:"67100", city:"Strasbourg", foodtrucker_id:"1")
+Street.create(adress:"112 avenue de Colmar", postalcode:"67100", city:"Strasbourg", foodtrucker_id:"1")
+Street.create(adress:"35 rue Boecklin", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"2")
+Street.create(adress:"24 allee des Comtes", postalcode:"67200", city:"Strasbourg", foodtrucker_id:"2")
+Street.create(adress:"44 boulevard de la Marne", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"3")
+Street.create(adress:"24 avenue Aristide Briand", postalcode:"67100", city:"Strasbourg", foodtrucker_id:"3")
+Street.create(adress:"16 place Brooglie", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"4")
+
 Admin.create(email:"matthieu.colombert@gmail.com", username:"matthieu", postalcode:"67000", password:"matthieu", password_confirmation:"matthieu")
 
 Menu.create(description:"Burgers aux steaks de sauterelles accompagnes d'algues frites", foodtrucker_id:"1")

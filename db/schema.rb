@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313215916) do
+ActiveRecord::Schema.define(version: 20180315113440) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20180313215916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
+  end
+
+  create_table "streets", force: :cascade do |t|
+    t.string "adress"
+    t.integer "foodtrucker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "postalcode"
+    t.string "city"
+    t.index ["foodtrucker_id"], name: "index_streets_on_foodtrucker_id"
   end
 
   create_table "users", force: :cascade do |t|
