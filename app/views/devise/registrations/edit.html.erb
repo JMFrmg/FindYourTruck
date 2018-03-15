@@ -101,6 +101,15 @@
                       <hr>
                         <div>
                           <h3>Vos food truck préferés</h3>
+                          <table>
+                            <% @favorites = current_user.foodtruckers %>
+                            <% @favorites.each do |foodtruck| %>
+                            <tr>
+                              <td><%= foodtruck.username %></td>
+    
+                            </tr>
+                            <% end %>
+                          </table>
                         </div>           
                           </div>
                         </div>
