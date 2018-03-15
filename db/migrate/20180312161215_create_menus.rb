@@ -4,8 +4,6 @@ class CreateMenus < ActiveRecord::Migration[5.1]
       t.references :foodtrucker, foreign_key: true
       t.text :description
       t.string :image
-
-      t.timestamps
     end
   end
 end

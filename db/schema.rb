@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180315142151) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "Ma commande"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20180315142151) do
     t.integer "menu_id"
     t.string "name"
     t.string "composition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float "price"
     t.index ["menu_id"], name: "index_dishes_on_menu_id"
   end
 
@@ -86,8 +85,6 @@ ActiveRecord::Schema.define(version: 20180315142151) do
     t.integer "foodtrucker_id"
     t.text "description"
     t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
   end
 
@@ -98,7 +95,7 @@ ActiveRecord::Schema.define(version: 20180315142151) do
     t.datetime "updated_at", null: false
     t.integer "postalcode"
     t.string "city"
-    t.boolean "actual"
+    t.boolean "actual", default: false
     t.index ["foodtrucker_id"], name: "index_streets_on_foodtrucker_id"
   end
 
