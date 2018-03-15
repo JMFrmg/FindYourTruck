@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   root 'home#index'
-
-  get 'home/show/:id(.:format)', to: 'home#show'
-
+  get 'home/show/:id', to: 'home#show'
+  resources :foodtruckers
   resources :menus
   resources :dishs
 

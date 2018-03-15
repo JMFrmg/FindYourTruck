@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Le nom du food truck</th>
+		<th>Code Postal</th>
+	</tr>
+	<% @foodtrucker.each do |f| %>
+	<tr>
+		<td><%= f.username %></td>
+		<td><%= f.postalcode %></td>
+	</tr>
+	<% end %>
+</table>
