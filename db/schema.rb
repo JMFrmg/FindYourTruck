@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315135840) do
+ActiveRecord::Schema.define(version: 20180315142151) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180315135840) do
     t.datetime "updated_at", null: false
     t.integer "postalcode"
     t.string "city"
+    t.boolean "actual"
     t.index ["foodtrucker_id"], name: "index_streets_on_foodtrucker_id"
   end
 
