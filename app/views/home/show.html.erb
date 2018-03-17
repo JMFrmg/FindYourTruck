@@ -1,23 +1,4 @@
-
-@foodtrucker.username
-@menu.description
-@menu.image
-
-<table>
-	<tr>
-		<th>Nom du plat</th>
-		<th>Composition</th>
-	</tr>
-	<% @dishes.each do |dish| %>
-	<tr>
-		<td><%= dish.name %></td>
-		<td><%= dish.composition %></td>
-	</tr>
-	<% end %>
-</table>
-
-
-
+<% @sumprices = 0 %>
 
         <div class="breadcrumb-wrap">
             <div class="container">
@@ -38,9 +19,9 @@
         <div class="container">
             <div class="row">
               <div class="col-md-6 margin20">
-                  <h3 class="heading">Le Foodtruck de Papa</h3>
+                  <h3 class="heading"><%= @foodtrucker.username %></h3>
                   <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni. Dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+                      <%= @menu.description %>
                   </p>
                   <p><a href="#" class="btn btn-theme-bg">Nous contacter</a></p>
               </div>
@@ -72,10 +53,19 @@
 
                             <h4>Hamburger</h4>
 
-                            <p>L'italien</p></br>
-                            <p>Le végé</p></br>
-                            <p>Le Kraken</p></br>
-                            <p>Le magistrat</p></br>
+                            <table>
+                            <tr>
+                                <th>Nom du plat</th>
+                                <th>Composition</th>
+                            </tr>
+                            <% @dishes.each do |dish| %>
+                            <tr>
+                                <td><%= dish.name %></td>
+                                <td><%= dish.composition %></td>
+                                <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", addtocart_path(dish), method: :post, class: "btn btn-skin btn-lg" %></td>
+                            </tr>
+                            <% end %>
+                            </table>
 
                         </div>
                         <div class="mask-bottom">
@@ -136,6 +126,45 @@
                             <p>Part de tarte</p></br>
 
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 margin20">
+                    <div class="s-feature-box text-center">
+                        <div class="mask-top">
+                            <table>
+                            <% @cart.dishes.each do |dish| %>
+                            <tr>
+                                <td><%= dish.name %></td>
+                                <td><%= dish.price %></td>
+                                <td class='product-delete'><%= link_to "Supprimer du panier", removedish_path(dish), method: :post, :class => "btn btn-danger btn-xm" %></td>
+                                <% @sumprices += dish.price %>
+                            </tr>
+                            <% end %>
+                            </table>
+                            <tr>
+                            <td>Total</td>
+                            <td class="total"><%=@sumprices%></td>
+                            </tr>
+                            <%= form_tag buycart_path do %>
+                              <article>
+                                <% if flash[:error].present? %>
+                                  <div id="error_explanation">
+                                    <p><%= flash[:error] %></p>
+                                  </div>
+                                <% end %>
+                                <label class="amount">
+                                </label>
+                              </article>
+                              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                      data-description="Montant total du panier :"
+                                      data-amount="<%= @sumprices * 100 %>"
+                                      data-currency="eur"
+                                      data-locale="auto"></script>
+                            <% end %>
+                        </div>
+                        <div class="mask-bottom">
+                          
                     </div>
                 </div>
             </div>

@@ -290,7 +290,6 @@ DEPENDENCIES
   byebug
   coffee-rails
   devise
-  dotenv
   dotenv-rails
   factory_bot_rails
   gravatar_image_tag

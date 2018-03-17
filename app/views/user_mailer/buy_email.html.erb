@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Merci d'avoir commandé sur notre site <%= @user.username %></h1>
+    <p>
+      Voici le récapitulatif de votre commande :
+    </p>
+    <p>Vous avez commandé chez <%= @foodtruck.username %>
+    <table>
+
+      <% @dishes.each do |dish| %> 
+
+      <tr>
+        <td><%= dish.name %></td>
+        <td><%= dish.composition %></td>
+        <td><%= dish.price %></td>
+        
+      </tr>
+      <% end %>
+    </table>
+    <br />
+    <h2>A bientôt <%= @user.username %> !</h2>
+  </body>
+</html>

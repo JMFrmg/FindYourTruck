@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
       current_foodtrucker.menu
   end
 
+  def logged_in?
+    !current_user.nil?
+  end
+
   def ensure_login
     return true if logged_in?
     session[:return_to] = request.fullpath

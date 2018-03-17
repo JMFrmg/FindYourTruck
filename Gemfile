@@ -23,7 +23,6 @@ gem 'jquery'
 #gem 'pg', '0.20.0'
 gem 'stripe'
 gem 'mailjet'
-gem 'dotenv'
 gem 'paperclip'
 
 group :development, :test do
