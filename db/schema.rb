@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315142151) do
+ActiveRecord::Schema.define(version: 20180315135840) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -89,13 +89,13 @@ ActiveRecord::Schema.define(version: 20180315142151) do
   end
 
   create_table "streets", force: :cascade do |t|
-    t.string "adress"
-    t.integer "foodtrucker_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "address"
     t.integer "postalcode"
     t.string "city"
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "actual", default: false
+    t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_streets_on_foodtrucker_id"
   end
 

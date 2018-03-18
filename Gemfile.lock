@@ -88,6 +88,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
     formatador (0.2.5)
+    geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gravatar_image_tag (1.2.0)
@@ -292,6 +293,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot_rails
+  geocoder
   gravatar_image_tag
   guard-rspec
   jbuilder
