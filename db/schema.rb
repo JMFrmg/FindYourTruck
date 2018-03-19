@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319093230) do
+ActiveRecord::Schema.define(version: 20180318204654) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -70,6 +71,10 @@ ActiveRecord::Schema.define(version: 20180319093230) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.integer "postalcode"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_foodtruckers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_foodtruckers_on_reset_password_token", unique: true
   end

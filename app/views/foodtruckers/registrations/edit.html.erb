@@ -1,0 +1,115 @@
+
+
+        <div class="breadcrumb-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4>Edition du profil</h4>
+                    </div>
+                </div>
+            </div>
+        </div><!--breadcrumbs-->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+      <div class="divide80"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                   <h3 class="text-left"><i class="fa fa-user"></i>Editer votre compte</h3>
+                    <form>
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-camera"></i>
+                                      <%= f.label "image d'avatar"%>
+                                      <%= f.file_field :avatar %>
+                                      <div class="round-image-50 center"><%= image_tag(current_foodtrucker.avatar.url(:thumb)) %>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-user"></i>
+                                      <%= f.label "Nom d'utilisateur" %>
+                                      <%= f.text_field :username, autocomplete: "username", placeholder: "Votre nouveau nom d'utilisateur", class: "form-control" %>                           
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-envelope-o"></i>
+                                      <%= f.label "Email" %>
+                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "votre nouvelle adresse mail", class: "form-control" %>
+                                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                                        <% end %>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-compass"></i>
+                                      <%= f.label "Code postal" %>
+                                      <%= f.text_field :postalcode, autocomplete: "postalcode", placeholder: "Changer votre code postal ", class: "form-control"  %>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
+                                      <%= f.label "Nouveau mot de passe" %> <i>(Laisser vide si vous ne voulez pas le changer)</i>
+                                      <%= f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length} caractères minimum", class: "form-control" %>   
+                                    </div>  
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
+                                      <%= f.label "Confirmation du nouveau mot de passe" %>
+                                      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmez votre mot de passe ", class: "form-control" %>
+                                    </div> 
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
+                                      <%= f.label "Mot de passe actuel" %> <i>(Pour confirmer les changements)</i>
+                                      <%= f.password_field :current_password, autocomplete: "off", placeholder: "Mot de passe", class: "form-control" %>
+                                    </div> 
+
+                                    <div class="pull-right">
+                                       <%= f.submit "Mise à jour", class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                                      </div>
+                                    <div class="clearfix"></div>           
+                                    <% end %>
+                                </form>
+                                <div class="divide80"></div>
+                              <div class="login-form center">
+                                <h3>Effacer mon compte</h3>
+
+                                <p>Mécontent?</p>
+                                <br>
+                                <%= button_to "Cloturer mon compte", registration_path(resource_name), class: "btn btn-danger btn-lg" , data: { confirm: "Êtes vous certain?" }, method: :delete %>
+                              </div>
+                            </div><!--register tab end-->
+                    <hr>
+                      <div class="col-md-2"></div>
+                      <div class="col-md-5">
+                        <div class="divide80"></div>
+                          <div>
+                        <h3>Vos informations</h3>
+                        <br>
+
+                        <ul>
+                          <li class="round-image-50"><%= image_tag(current_foodtrucker.avatar.url(:thumb)) %></li>
+                          <li><i class="icon-append fa fa-user"></i>
+                                    <%= current_foodtrucker.username %></li>
+                          <li><i class="icon-append fa fa-envelope-o"></i>
+                                    <%= current_foodtrucker.email %></li>
+                          <li><i class="icon-append fa fa-compass"></i>
+                                    <%= current_foodtrucker.postalcode %></li>
+                        </ul>
+                          </div>
+                      <hr>
+                        <div>
+                          <h3>Vos adresses truck</h3>
+                        </div>           
+                          </div>
+                        </div>
+                      </div>
+                    
+
+
+
+                      <div class="divide80"></div>
+  <div class="breadcrumb-wrap">
+  </div>
+

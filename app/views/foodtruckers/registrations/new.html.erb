@@ -1,0 +1,91 @@
+        <div class="breadcrumb-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Formulaire d'inscription Foodtrucker</h4>
+                    </div>
+                </div>
+            </div>
+        </div><!--breadcrumbs-->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+      <div class="divide80"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                   
+                    <form>
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-user"></i>
+                                      <%= f.label "Nom du Foodtruck" %>
+                                      <%= f.text_field :username, autocomplete: "username", placeholder: "ex: burger & co", class: "form-control" %>                           
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-envelope-o"></i>
+                                      <%= f.label "Email" %>
+                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "ex: burger&co@hotmail.com", class: "form-control" %>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-compass"></i>
+                                      <%= f.label "Code postal" %>
+                                      <%= f.text_field :postalcode, autocomplete: "postalcode", placeholder: "ex: 67000 ", class: "form-control"  %>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
+                                      <%= f.label "Mot de passe" %>
+                                      <%= f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length} caractères minimum", class: "form-control" %>   
+                                    </div>  
+
+                                    <div class="form-group">
+                                      <i class="icon-append fa fa-lock"></i>
+                                      <%= f.label "Confirmation du mot de passe" %>
+                                      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmez votre mot de passe ", class: "form-control" %>
+                                    </div> 
+
+                                    <div class="pull-right">
+                                       <%= f.submit "Créer votre compte", class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                                      </div>
+                                    <div class="clearfix"></div>
+                                      
+                                    <% end %>
+                                    
+                                </form>
+                              
+                            </div><!--register tab end-->
+                      <div class="col-md-3"></div>
+                      <div class="col-md-4">
+                        <div class="divide80"></div>
+                        <div class="login-form center">
+
+
+                        <h3>J'ai déjà un compte!</h3>
+
+                        <br>
+                      
+                          <%= link_to "Connectez-vous", new_foodtrucker_session_path, class: "btn btn-theme-dark btn-sm",style:'color:#FFFFFF' %>
+                            </div>
+                            <hr>
+                            <div class="login-form center">
+
+                          <h3>Je ne suis pas foodtrucker</h3>
+
+                        <br>
+                      
+                          <%= link_to "Coté utilisateur", new_user_registration_path, class: "btn btn-theme-dark btn-sm",style:'color:#FFFFFF' %>
+                            </div>
+                      
+                          </div>
+                        </div>
+                      </div>
+                    
+
+
+
+                      <div class="divide80"></div>
+  <div class="breadcrumb-wrap">
+  </div>
+
