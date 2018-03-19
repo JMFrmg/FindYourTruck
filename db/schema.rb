@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20180319103322) do
   end
 
   create_table "dishes", force: :cascade do |t|
+    t.integer "menu_id"
     t.string "name"
     t.string "composition"
     t.float "price"
-    t.integer "menu_id"
     t.index ["menu_id"], name: "index_dishes_on_menu_id"
   end
 
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(version: 20180319103322) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name"
-    t.string "picture"
     t.integer "foodtrucker_id"
+    t.text "description"
+    t.string "image"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
   end
 
