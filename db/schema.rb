@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318204654) do
-
+ActiveRecord::Schema.define(version: 20180319103322) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,12 +47,27 @@ ActiveRecord::Schema.define(version: 20180318204654) do
     t.index ["dish_id", "cart_id"], name: "index_carts_dishes_on_dish_id_and_cart_id"
   end
 
-  create_table "dishes", force: :cascade do |t|
+  create_table "deserts", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
     t.integer "menu_id"
+    t.index ["menu_id"], name: "index_deserts_on_menu_id"
+  end
+
+  create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.string "composition"
     t.float "price"
+    t.integer "menu_id"
     t.index ["menu_id"], name: "index_dishes_on_menu_id"
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "menu_id"
+    t.index ["menu_id"], name: "index_drinks_on_menu_id"
   end
 
   create_table "foodtruckers", force: :cascade do |t|
@@ -87,9 +101,9 @@ ActiveRecord::Schema.define(version: 20180318204654) do
   end
 
   create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
     t.integer "foodtrucker_id"
-    t.text "description"
-    t.string "image"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
   end
 
@@ -97,6 +111,13 @@ ActiveRecord::Schema.define(version: 20180318204654) do
     t.string "link"
     t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_pictures_on_foodtrucker_id"
+  end
+
+  create_table "sidedishes", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "menu_id"
+    t.index ["menu_id"], name: "index_sidedishes_on_menu_id"
   end
 
   create_table "streets", force: :cascade do |t|

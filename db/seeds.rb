@@ -29,10 +29,10 @@ Foodtrucker.create(email:"simon.le.zelote@gmail.com", username:"simonlezelote", 
 
 Admin.create(email:"matthieu.colombert@gmail.com", username:"matthieu", postalcode:"67000", password:"matthieu", password_confirmation:"matthieu")
 
-Menu.create(description:"Burgers aux steaks de sauterelles accompagnes d'algues frites", foodtrucker_id:"1")
-Menu.create(description:"Liqueurs de meduses et cuvee speciale au venin de scorpion", foodtrucker_id:"2")
-Menu.create(description:"Harengs farcis et creme de norvege", foodtrucker_id:"3")
-Menu.create(description:"Sandwichs mayonnaise saucisson accompagnes de chips", foodtrucker_id:"4")
+Menu.create(name:"Burgers aux steaks de sauterelles accompagnes d'algues frites", foodtrucker_id:"1")
+Menu.create(name:"Liqueurs de meduses et cuvee speciale au venin de scorpion", foodtrucker_id:"2")
+Menu.create(name:"Harengs farcis et creme de norvege", foodtrucker_id:"3")
+Menu.create(name:"Sandwichs mayonnaise saucisson accompagnes de chips", foodtrucker_id:"4")
 
 
 Dish.create(name:"Liqueur de prunes au venin de mygales", price:"9", menu_id:"2")
