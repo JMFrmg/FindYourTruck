@@ -5,9 +5,10 @@ class FoodtruckersController < ApplicationController
     @address = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.find(1).address
   end
 
-  def getfoodtrucksbygeoloc
-  	@user_ip = request.location.ip
-
+  def generalserach
+    @user_location = Userlocation.new(ip:request.location.ip)
+    @user_location.save
+    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude, 10)
   end
 
   private
