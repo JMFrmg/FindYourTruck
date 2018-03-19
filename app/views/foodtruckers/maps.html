@@ -593,11 +593,7 @@
 		map3.addMarker({
 			lat: -12.043333,
 			lng: -77.03,
-			title: 'Lima',
-			details: {
-			database_id: 42,
-			author: 'HPNeo'
-			},
+			title: 'Lima'
 			click: function(e){
 				if(console.log) {
 					console.log(e);
@@ -622,3 +618,40 @@
 
     </body>
 </html>
+<div id="map"></div>
+<div id="address_information" value="Stra">
+
+</div>
+<div>
+  <%= content_tag :div, id: 'address_information', data: {address: @address } do %>
+ <% end %>
+</div>
+</div>
+<script>
+    var geocoder;
+    var map = $('#address_information').data('address');
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: -34.397, lng: 150.644}
+      });
+      var geocoder = new google.maps.Geocoder();
+      geocodeAddress(geocoder, map);
+    }
+
+    function geocodeAddress(geocoder, resultsMap) {
+      geocoder.geocode({'#address_information': address}, function(results, status) {
+        if (status === 'OK') {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            animation: google.maps.Animation.DROP,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
+</script>

@@ -8,12 +8,26 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Raleway:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEYfaES_YIoythAP8T7JYxoxuyXjB_ck&callback=initMap"></script>
   </head>
 
   <body>
     <%= render 'layouts/header' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
-      <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbEYfaES_YIoythAP8T7JYxoxuyXjB_ck&callback=initMap"></script>
   </body>
+  <script>
+  jQuery(document).ready(function () {
+      revapi = jQuery('.tp-banner').revolution(
+              {
+                  delay: 6000,
+                  startwidth: 1170,
+                  startheight: 600,
+                  hideThumbs: 10,
+                  fullWidth: "on",
+                  forceFullWidth: "on",
+                  navigationStyle: "preview4"
+              });
+  });
+  </script>
 </html>
