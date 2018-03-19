@@ -6,4 +6,5 @@ class Foodtrucker < ApplicationRecord
   has_and_belongs_to_many :users, class_name: "User"
   has_one :menu
   has_many :streetadresses, class_name: "Street"
+  has_many :pictures
 end
