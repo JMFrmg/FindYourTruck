@@ -10,7 +10,12 @@
 	<tr>
 		<td><%= address.address %></td>
 		<td><%= link_to 'Se rendre disponible', beactual_path(address), method: :post %></td>
+		<% if address.actual == true %>
+		<td>	Je suis ici en ce moment!</td>
+		<% end %>
 		
 	</tr>
 	<% end %>
 </table>
+<br />
+<td><%= link_to 'Se rendre indisponible', beunactual_path(@foodtrucker), method: :post %></td>
