@@ -9,7 +9,19 @@ class FoodtruckersController < ApplicationController
     #@user_location = Userlocation.new(ip:request.location.ip)
     @user_location = Userlocation.new(ip:" 130.79.220.86")
     @user_location.save
-    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10])
+    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10)
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def addaddress
+    @address = Street.new(params[:address])
+    current_user.streets << @address
+    redirect_to edit_foodtrucker_path
   end
 
   private
