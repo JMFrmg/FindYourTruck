@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%= content_tag "div", id: 'user_position', data: {lat: @user_location.latitude, lng: @user_location.longitude} do %>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -655,3 +656,60 @@
     }
 
 </script>
+
+
+
+<style>
+      #map {
+        height: 600px;
+				width: 100%;
+			 }
+</style>
+<%= content_tag "div", id: 'near_foodtruck', data: {latf: @nearfoodtrucks.last.latitude, lngf: @nearfoodtrucks.last.longitude} do %>
+<div id="map"></div>
+
+
+<script>
+			 var map = new GMaps({
+ 				el: '#map',
+        lat: 48.5839200,
+        lng: 7.7455300
+ 			});
+
+          map.addMarker({
+            lat: $('#near_foodtruck').data('latf'),
+            lng: $('#near_foodtruck').data('lngf'),
+            animation: google.maps.Animation.DROP
+            });
+		 </script>
+     <% end %>
+     <%= content_tag "div", id: 'near_foodtruck', data: {latf: @nearfoodtrucks.first.latitude, lngf: @nearfoodtrucks.first.longitude} do %>
+     <script>
+     var map = new GMaps({
+        el: '#map',
+       lat: 48.5839200,
+       lng: 7.7455300
+      });
+
+     map.addMarker({
+       lat: $('#near_foodtruck').data('latf'),
+       lng: $('#near_foodtruck').data('lngf'),
+       animation: google.maps.Animation.DROP
+       });
+     </script>
+     <% end %>
+        <%= content_tag "div", id: 'near_foodtruck', data: {latf: @nearfoodtrucks.second.latitude, lngf: @nearfoodtrucks.second.longitude} do %>
+        <script>
+        var map = new GMaps({
+         el: '#map',
+         lat: 48.5839200,
+         lng: 7.7455300
+       });
+
+          map.addMarker({
+            lat: $('#near_foodtruck').data('latf'),
+            lng: $('#near_foodtruck').data('lngf'),
+            animation: google.maps.Animation.DROP
+            });
+          </script>
+     <% end %>
