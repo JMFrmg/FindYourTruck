@@ -3,3 +3,14 @@
 <%= text_field_tag 'address' %>
 <%= submit_tag 'Ajouter une adresse' %>
 <% end %>
+<br/>
+<table>
+	
+	<% @addresses.each do |address| %>
+	<tr>
+		<td><%= address.address %></td>
+		<td><%= link_to 'Se rendre disponible', beactual_path(address), method: :post %></td>
+		
+	</tr>
+	<% end %>
+</table>

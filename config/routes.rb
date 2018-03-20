@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/show/:id', to: 'home#show', as: 'showfoodtrucker'
   post 'foodtruckers/address/:id', to: 'foodtruckers#addaddress', as: 'addaddress'
+  post 'foodtruckers/beactual/:id', to: 'foodtruckers#beactual', as: 'beactual'
   resources :foodtruckers
   resources :menus
   resources :dishs

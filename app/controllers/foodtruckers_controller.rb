@@ -14,6 +14,7 @@ class FoodtruckersController < ApplicationController
   end
 
   def edit
+    @addresses = Foodtrucker.find(params[:id]).streetadresses
   end
 
   def update
@@ -25,7 +26,13 @@ class FoodtruckersController < ApplicationController
     @address.foodtrucker = Foodtrucker.find(params[:id])
     @address.save
     redirect_to edit_foodtrucker_path
+  end
 
+  def beactual
+    @street = Street.find(params[:id])
+    @street.actual = true
+    @street.save
+    redirect_to edit_foodtrucker_path
   end
 
   private
