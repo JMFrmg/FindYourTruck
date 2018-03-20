@@ -7,9 +7,14 @@ class FoodtruckersController < ApplicationController
 
   def generalserach
     #@user_location = Userlocation.new(ip:request.location.ip)
-    @user_location = Userlocation.new(ip:" 130.79.220.86")
-    @user_location.save
-    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10)
+    #@user_location = Userlocation.new(ip:" 130.79.220.86")
+    #@user_location.save
+    #@nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10)
+    @street = Street.all
+    @hash = Gmaps4rails.build_markers(@street) do |foodtruck, marker|
+    marker.lat foodtruck.latitude
+    marker.lng foodtruck.longitude
+  end
 
   end
 
