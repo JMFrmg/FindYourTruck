@@ -9,7 +9,7 @@ class FoodtruckersController < ApplicationController
     #@user_location = Userlocation.new(ip:request.location.ip)
     @user_location = Userlocation.new(ip:" 130.79.220.86")
     @user_location.save
-    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10])
+    @nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10)
   end
 
   private
