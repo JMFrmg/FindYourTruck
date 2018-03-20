@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
   get 'home/show/:id', to: 'home#show', as: 'showfoodtrucker'
+  post 'foodtruckers/address/:id', to: 'foodtruckers#addaddress', as: 'addaddress'
   resources :foodtruckers
   resources :menus
   resources :dishs

@@ -20,8 +20,10 @@ class FoodtruckersController < ApplicationController
   end
 
   def addaddress
-    @address = Street.new(params[:address])
-    current_user.streets << @address
+    @address = Street.new
+    @address.address = params[:address]
+    @address.foodtrucker = Foodtrucker.find(params[:id])
+    @address.save
     redirect_to edit_foodtrucker_path
 
   end
