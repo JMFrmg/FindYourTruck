@@ -8,7 +8,7 @@
 	<tr>
 		<td><%= f.username %></td>
 		<td><%= f.postalcode %></td>
-		<td><%= f.streetadresses.find(1).address %></td>
+		<td><%= f.streetadresses.where(actual: true).last.address %></td>
 	</tr>
 	<% end %>
 </table>
