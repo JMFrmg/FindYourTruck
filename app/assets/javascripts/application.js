@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= rails-ujs
-//= require jquery_ujs
 //= require turbolinks
 //= require jquery.min
 //= require jquery-migrate.min
@@ -35,4 +34,5 @@
 //= require gmaps
 //= require underscore-min
 //= require gmaps/google
+//= require jquery_ujs
 //= require_tree .
