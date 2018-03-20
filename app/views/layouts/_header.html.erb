@@ -1,4 +1,4 @@
-<div class="top-bar-dark">
+<div class="top-bar-light">
     <div class="container">
         <div class="row">
             <div class="col-sm-4 hidden-xs">
@@ -23,10 +23,49 @@
                     <li><%= link_to "Profil", edit_foodtrucker_registration_path %></li>
                     <li><%= link_to content_tag(:i, nil, class: 'pe-7s-user') + " Deconnexion ", destroy_foodtrucker_session_path, :method => :delete %></li>
                     <% else %>
-                    <li><%= link_to content_tag(:i, nil, class: 'fa fa-lock') + " Foodtrucker ", new_foodtrucker_session_path %></li>
-                    <li><%= link_to content_tag(:i, nil, class: 'fa fa-lock') + " Connexion ", new_user_session_path %></li>
-                    <li><%= link_to content_tag(:i, nil, class: 'fa fa-user') + " S'inscrire ", new_user_registration_path %></li></li>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-theme-bg btn-sm" data-toggle="modal" data-target="#connexion">Connection</button>
+                    <button type="button" class="btn btn-theme-bg btn-sm" data-toggle="modal" data-target="#inscription">Inscription</button>
                     <% end %>
+                     <!-- Modal connexion -->
+                    <div class="modal fade" id="connexion" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Choix du profil de connexion</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <%= link_to " Utilisateur ", new_user_session_path, class: "btn btn-theme-bg btn-sm" %> <div class="col-md-6">        
+                            <%= link_to " Foodtrucker ", new_foodtrucker_session_path, class: "btn btn-theme-bg btn-sm" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                    <!-- Modal inscription-->
+                    <div class="modal fade" id="inscription" tabindex="2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Choix du profil d'inscription</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <%= link_to " Utilisateur ", new_user_registration_path, class: "btn btn-theme-bg btn-sm" %> <div class="col-md-6">
+                            <%= link_to " Foodtrucker ", new_foodtrucker_registration_path, class: "btn btn-theme-bg btn-sm" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+                    
                 </ul>
             </div>
         </div>
