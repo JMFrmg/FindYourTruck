@@ -1,0 +1,21 @@
+<%= form_tag (addaddress_path) do %>
+<%= label_tag 'text', 'Adresse :' %>
+<%= text_field_tag 'address' %>
+<%= submit_tag 'Ajouter une adresse' %>
+<% end %>
+<br/>
+<table>
+	
+	<% @addresses.each do |address| %>
+	<tr>
+		<td><%= address.address %></td>
+		<td><%= link_to 'Se rendre disponible', beactual_path(address), method: :post %></td>
+		<% if address.actual == true %>
+		<td>	Je suis ici en ce moment!</td>
+		<% end %>
+		
+	</tr>
+	<% end %>
+</table>
+<br />
+<td><%= link_to 'Se rendre indisponible', beunactual_path(@foodtrucker), method: :post %></td>
