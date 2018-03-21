@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.min
+//= require jquery_ujs
 //= rails-ujs
 //= require turbolinks
-//= require jquery.min
 //= require jquery-migrate.min
 //= require bootstrap.min
 //= require jquery.easing.1.3.min
@@ -34,5 +35,4 @@
 //= require gmaps
 //= require underscore-min
 //= require gmaps/google
-//= require jquery_ujs
 //= require_tree .
