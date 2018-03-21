@@ -31,6 +31,7 @@ class FoodtruckersController < ApplicationController
 
   def edit
     @foodtrucker = Foodtrucker.find(params[:id])
+    @photos = @foodtrucker.photo
     @addresses = @foodtrucker.streetadresses
     @photo = Photo.new
   end

@@ -1,42 +1,102 @@
-<div>
-<%= form_for @photo, url: addphoto_path(@foodtrucker) do |f| %>
-  
-  <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
- 
-  <%= f.submit %>
-<% end %>
-</div>
+        <div class="breadcrumb-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Page d'édition du foodtruck</h4>
+                    </div>
+                </div>
+            </div>
+        </div><!--breadcrumbs-->
+        <div class="divide80"></div>
+<div class="container">
+		<div class="col-md-2"></div>
+            <div class="row">
+                <div class="col-md-8">
+                   <%= form_tag (addaddress_path) do %>
+                    <form>
+                    	<h3>Vous pouvez ajouter vos adresses préférées </h3>
+                      <div class="form-group">
+                       <i class="icon-append fa fa-compass"></i>
+                       <%= label_tag 'text', 'Adresse :' %> <br>
+                       <%= text_field_tag 'address', nil, placeholder: "ex: 12 rue du foodtruck, Paris, France", class: "form-control", title: "ex: 12 rue du foodtruck, Paris, France" %>                           
+                     </div>
+                     <div class="pull-right">
+                        <%= submit_tag 'Ajouter une adresse', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <div class="divide40"></div>
+	<hr>
 
-<div>
-	<% if @foodtrucker.photo %>
-	   
-	    <%= image_tag(@foodtrucker.photo.image.url)  %>
-	   	<%= link_to 'Supprimer la photo', removephoto_path(@foodtrucker.photo), method: :post %>	
-	   
-	<% end %>
-</div>
-
-<%= form_tag (addaddress_path) do %>
-<%= label_tag 'text', 'Adresse :' %>
-<%= text_field_tag 'address' %>
-<%= submit_tag 'Ajouter une adresse' %>
-<% end %>
 <br/>
-<table>
+<table class="table table-hover">
+	<thead>
+     <tr>
+      	<th>Adresse</th>
+        <th>Condition</th>
+        <th>Action</th>
+     </tr>
+    </thead>
 	
 	<% @addresses.each do |address| %>
 	<tr>
 		<td><%= address.address %></td>
-		<td><%= link_to 'Se rendre disponible', beactual_path(address), method: :post %></td>
-		<% if address.actual == true %>
-		<td>	Je suis ici en ce moment!</td>
+			<% if address.actual == true %>
+		<td> <strong>Ma position</strong></td>
+		<td><%= link_to "c'est fini", beunactual_path(@foodtrucker), method: :post, class: "btn btn-danger" %></td>
+			<% else %>
+		<td></td>
+		<td><%= link_to 'Je suis là', beactual_path(address), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
 		<% end %>
 		
 	</tr>
 	<% end %>
 </table>
-<br />
-<td><%= link_to 'Se rendre indisponible', beunactual_path(@foodtrucker), method: :post %></td>
+
+<div class="breadcrumb-wrap"></div>
+<div class="divide40"></div>
+<div class="container">
+		<div class="col-md-3"></div>
+            <div class="row">
+                <div class="col-md-5">
+                   <%= form_for @photo, url: addphoto_path(@foodtrucker) do |f| %>
+                    <form>
+                    	<h3>Vous pouvez ajouter des images </h3>
+                      <div class="form-group">
+                       <i class="icon-append fa fa-camera"></i>
+                       <%= f.label :image %> <br>
+                       <%= f.file_field :image, class: "form-control-file" %>                           
+                     </div>
+                     <div class="pull-right">
+                        <%= f.submit 'Ajouter une image', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <div class="divide40"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="portfolio-box iso-call col-3-space">
+        	<h3> vos images </h3>
+			
+	<% if @foodtrucker.photo %>
+
+		<div class="project-post photography web-design">
+            <div class="item-img-wrap ">
+	            <div><%= image_tag @photos.image.url, :class => "img-responsive" %></div>
+	   			<div class="work-desc">
+                <span><%= link_to content_tag(:i, nil, class: "fa fa-trash") + 'Supprimer' , removephoto_path(@foodtrucker.photo), method: :post, class: "btn btn-danger btn-ico btn-lg" %></span>
+                </div><!--work desc-->   		
+	<% end %>
+				</div>
+        	</div><!--project post-->
+    	</div>
+    </div>
+</div><!--container-->
