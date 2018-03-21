@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20180321130618) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_foodtruckers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_foodtruckers_on_reset_password_token", unique: true
   end
