@@ -44,12 +44,18 @@
 	<% @addresses.each do |address| %>
 	<tr>
 		<td><%= address.address %></td>
+
 			<% if address.actual == true %>
 		<td> <strong>Ma position</strong></td>
 		<td><%= link_to "c'est fini", beunactual_path(@foodtrucker), method: :post, class: "btn btn-danger" %></td>
 			<% else %>
 		<td></td>
 		<td><%= link_to 'Je suis là', beactual_path(address), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+
+		<td><%= link_to 'Se rendre disponible', beactual_path(address, foodtrucker_id: @foodtrucker.id), method: :post %></td>
+		<% if address.actual == true %>
+		<td>	Je suis ici en ce moment!</td>
+
 		<% end %>
 		
 	</tr>
