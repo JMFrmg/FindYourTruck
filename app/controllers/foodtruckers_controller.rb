@@ -10,12 +10,16 @@ class FoodtruckersController < ApplicationController
     #@user_location = Userlocation.new(ip:" 130.79.220.86")
     #@user_location.save
     #@nearfoodtrucks = Street.near([@user_location.latitude, @user_location.longitude], 10)
-    @street = Street.all
-    @hash = Gmaps4rails.build_markers(@street) do |foodtruck, marker|
-    marker.lat foodtruck.latitude
-    marker.lng foodtruck.longitude
+    @street = Street.where(actual: true).all
+    @hash = Gmaps4rails.build_markers(@street) do |street, marker|
+      marker.lat street.latitude
+      marker.lng street.longitude
+      marker.title street.city
+    end
   end
 
+  def gmaps4rails_marker_picture
+    { picture: "", width: "28", height: "33" }
   end
 
   def edit

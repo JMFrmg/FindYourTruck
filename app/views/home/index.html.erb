@@ -35,7 +35,7 @@
                      data-speed="500"
                      data-start="1800"
                      data-easing="Sine.easeOut">
-                    <a href="#" class="btn btn-theme-bg btn-lg">Découvrir</a>
+                     <button type="button" class="btn btn-theme-bg btn-lg" data-toggle="modal" data-target="#decouvrir">Découvrir</button>
                 </div>
 
                 <div class="caption sfb rev-buttons tp-resizeme"
@@ -193,7 +193,21 @@
     </div>
 </div><!--full width banner-->
 <!--revolution end-->
-
+<div class="modal fade" id="decouvrir" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">On vous trouve les FoodTrucks à proximité</h5>
+        <div class="modal-body">
+          <p>Cliquez sur 'Autoriser la geolocalisation'<br /> dans l'infobulle de votre navigateur</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= link_to " Découvrir ", generalsearch_path, class: "btn btn-theme-bg btn-sm" %>
+    </div>
+  </div>
+</div>
+</div>
 <div class="divide60"></div>
         <div class="container">
           <div class="row">
