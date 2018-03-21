@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-  
-
   devise_for :foodtruckers, controllers: {
              :registrations => "foodtruckers/registrations"}
   devise_for :admins
