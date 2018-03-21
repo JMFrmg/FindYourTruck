@@ -30,7 +30,7 @@
 	<% @addresses.each do |address| %>
 	<tr>
 		<td><%= address.address %></td>
-		<td><%= link_to 'Se rendre disponible', beactual_path(address), method: :post %></td>
+		<td><%= link_to 'Se rendre disponible', beactual_path(address, foodtrucker_id: @foodtrucker.id), method: :post %></td>
 		<% if address.actual == true %>
 		<td>	Je suis ici en ce moment!</td>
 		<% end %>

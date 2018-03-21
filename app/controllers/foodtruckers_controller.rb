@@ -63,10 +63,15 @@ class FoodtruckersController < ApplicationController
   end
 
   def beactual
-    @street = Street.find(params[:id])
-    @street.actual = true
-    @street.save
-    redirect_to edit_foodtrucker_path(current_foodtrucker)
+    if actual?
+      flash[:notice] = "Vous êtes déjà disponible à une autre adresse"
+      redirect_to edit_foodtrucker_path(Foodtrucker.find(params[:foodtrucker_id]))
+    else
+      @street = Street.find(params[:id])
+      @street.actual = true
+      @street.save
+      redirect_to edit_foodtrucker_path(Foodtrucker.find(params[:foodtrucker_id]))
+    end
   end
 
   def beunactual
@@ -91,6 +96,19 @@ class FoodtruckersController < ApplicationController
 
   def findphoto
     @photo = Photo.find(params[:id])
+  end
+
+  def get_foodtrucker
+    Foodtrucker.find(params[:id])
+  end
+
+  def actual?
+    Foodtrucker.find(params[:foodtrucker_id]).streetadresses.each do |street|
+      if street.actual
+        return true
+      end
+    end
+    return false
   end
 
 end
