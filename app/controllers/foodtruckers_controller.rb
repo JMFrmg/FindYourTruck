@@ -33,7 +33,7 @@ class FoodtruckersController < ApplicationController
 
   def addphoto
     @photo = Photo.new(photo_params)
-    Foodtrucker.find(params[:id]).photos << @photo
+    Foodtrucker.find(params[:id]).photo = @photo
     if @photo.save
       flash[:success] = "Votre photo a bien été envoyée!"
       redirect_to edit_foodtrucker_path

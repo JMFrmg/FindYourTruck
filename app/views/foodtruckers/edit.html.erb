@@ -11,12 +11,11 @@
 </div>
 
 <div>
-	<% if @foodtrucker.photos.exists? %>
-	   <% @foodtrucker.photos.each do |photo| %>
+	<% if @foodtrucker.photo %>
 	   
-	    <%= image_tag(photo.image.url)  %>
-	   	<%= link_to 'Supprimer la photo', removephoto_path(photo), method: :post %>	
-	   <% end %>
+	    <%= image_tag(@foodtrucker.photo.image.url)  %>
+	   	<%= link_to 'Supprimer la photo', removephoto_path(@foodtrucker.photo), method: :post %>	
+	   
 	<% end %>
 </div>
 
