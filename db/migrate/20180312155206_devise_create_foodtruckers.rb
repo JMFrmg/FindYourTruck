@@ -33,7 +33,7 @@ class DeviseCreateFoodtruckers < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
 
 
-      t.timestamps null: false
+      
     end
 
     add_index :foodtruckers, :email,                unique: true

@@ -1,3 +1,25 @@
+<div>
+<%= form_for @photo, url: addphoto_path(@foodtrucker) do |f| %>
+  
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+ 
+  <%= f.submit %>
+<% end %>
+</div>
+
+<div>
+	<% if @foodtrucker.photos.exists? %>
+	   <% @foodtrucker.photos.each do |photo| %>
+	   
+	    <%= image_tag(photo.image.url)  %>
+	   	<%= link_to 'Supprimer la photo', removephoto_path(photo), method: :post %>	
+	   <% end %>
+	<% end %>
+</div>
+
 <%= form_tag (addaddress_path) do %>
 <%= label_tag 'text', 'Adresse :' %>
 <%= text_field_tag 'address' %>

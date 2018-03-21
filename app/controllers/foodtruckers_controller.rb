@@ -25,9 +25,26 @@ class FoodtruckersController < ApplicationController
   def edit
     @foodtrucker = Foodtrucker.find(params[:id])
     @addresses = @foodtrucker.streetadresses
+    @photo = Photo.new
   end
 
   def update
+  end
+
+  def addphoto
+    @photo = Photo.new(photo_params)
+    Foodtrucker.find(params[:id]).photos << @photo
+    if @photo.save
+      flash[:success] = "Votre photo a bien été envoyée!"
+      redirect_to edit_foodtrucker_path
+    else
+      redirect_to edit_foodtrucker_path
+    end
+  end
+
+  def removephoto
+    findphoto.delete
+    redirect_to edit_foodtrucker_path
   end
 
   def addaddress
@@ -59,6 +76,14 @@ class FoodtruckersController < ApplicationController
 
   def foodtrucker_params
     params.require(:foodtrucker).permit(:username, :email, :postalcode)
+  end
+
+  def photo_params
+    params.require(:photo).permit(:image)
+  end
+ 
+  def findphoto
+    @photo = Photo.find(params[:id])
   end
 
 end
