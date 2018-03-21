@@ -5,7 +5,7 @@ class FoodtruckersController < ApplicationController
     @address = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true).last.address
   end
 
-  def generalserach
+  def generalsearch
     #@user_location = Userlocation.new(ip:request.location.ip)
     #@user_location = Userlocation.new(ip:" 130.79.220.86")
     #@user_location.save

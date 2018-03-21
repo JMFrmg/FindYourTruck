@@ -8,10 +8,12 @@
 handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'sidebar_builder'}}, function(){
     if(navigator.geolocation)
-  navigator.geolocation.getCurrentPosition();
+    navigator.geolocation.getCurrentPosition(displayOnMap);
+    });
+    function displayOnMap(position){
    markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.map.centerOn(position);
-  });
+    });
 </script>

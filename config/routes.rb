@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'foodtruckers/address/:id', to: 'foodtruckers#addaddress', as: 'addaddress'
   post 'foodtruckers/beactual/:id', to: 'foodtruckers#beactual', as: 'beactual'
   post 'foodtruckers/beunactual/:id', to: 'foodtruckers#beunactual', as: 'beunactual'
+  get 'generalsearch', to: 'foodtruckers#generalsearch'
   resources :foodtruckers
   resources :menus
   resources :dishs
