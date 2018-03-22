@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admins/edit_users'
+
   devise_for :foodtruckers
 
   devise_for :admins
