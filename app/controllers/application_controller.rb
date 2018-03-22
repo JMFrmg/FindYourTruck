@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path and return false
   end
 
+  def ensure_foodtrucker_login
+    return true if logged_in?
+    session[:return_to] = request.fullpath
+    redirect_to new_foodtrucker_session_path and return false
+  end
+
     protected
 
     def configure_permitted_parameters

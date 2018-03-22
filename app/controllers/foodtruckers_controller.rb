@@ -1,5 +1,7 @@
 class FoodtruckersController < ApplicationController
 
+  before_action :ensure_foodtrucker_login, only: [:edit, :update, :addphoto, :removephoto, :addaddress, :beactual]
+
   def index
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
     @address = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true).last.address
