@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   post 'carts/removedish/:id', to: 'carts#removedish', as: 'removedish'
   post 'carts/buy/:id', to: 'carts#buy', as: 'buycart'
 
+  get 'admins/index', to: 'admins#index', as: 'adminsindex'
+  get 'admins/foodtrucker/:id', to: 'admins#edit_foodtrucker', as: 'admin_edit_foodtrucker'
+  get 'admins/user/:id', to: 'admins#edit_user', as: 'admin_edit_user'
+
 
 end
