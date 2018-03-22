@@ -102,10 +102,11 @@
                         <div>
                           <h3>Vos food truck préferés</h3>
                           <table>
-                            <% @favorites = current_user.foodtruckers %>
+                            <% @favorites = current_user.favorites %>
                             <% @favorites.each do |foodtruck| %>
                             <tr>
                               <td><%= foodtruck.username %></td>
+                              <td><%= link_to content_tag(:i, nil, class: "fa fa-trash") + 'Supprimer des favoris' , deletefavorite_path(foodtruck), method: :post, class: "btn btn-danger btn-ico btn-lg" %></td>
     
                             </tr>
                             <% end %>

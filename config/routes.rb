@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
   get 'home/show/:id', to: 'home#show', as: 'showfoodtrucker'
+  post 'home/deletefavorite/:id', to: 'home#delete_favorite', as: 'deletefavorite'
+  post 'home/addfavorite/:id', to: 'home#add_to_favorites', as: 'addfavorite'
   post 'foodtruckers/address/:id', to: 'foodtruckers#addaddress', as: 'addaddress'
   post 'foodtruckers/beactual/:id', to: 'foodtruckers#beactual', as: 'beactual'
   post 'foodtruckers/beunactual/:id', to: 'foodtruckers#beunactual', as: 'beunactual'

@@ -33,6 +33,7 @@ class FoodtruckersController < ApplicationController
   def update
   end
 
+
   def addphoto
     @photo = Photo.new(photo_params)
     Foodtrucker.find(params[:id]).photos << @photo

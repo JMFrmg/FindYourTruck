@@ -20,8 +20,9 @@
             <div class="row">
               <div class="col-md-6 margin20">
                   <h3 class="heading"><%= @foodtrucker.username %></h3>
+                  <p><%= link_to 'Ajouter à mes favoris!', addfavorite_path(@foodtrucker), method: :post, class: "btn btn-theme-bg btn-sm" %></p>
                   <p>
-                      <%= @menu.description %>
+                      <%= @menu.name %>
                   </p>
                   <p><a href="#" class="btn btn-theme-bg">Nous contacter</a></p>
               </div>
