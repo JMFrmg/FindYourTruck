@@ -12,6 +12,16 @@ Rails.application.routes.draw do
   post 'foodtruckers/beunactual/:id', to: 'foodtruckers#beunactual', as: 'beunactual'
   post 'foodtruckers/:id/addphoto/', to: 'foodtruckers#addphoto', as: 'addphoto'
   post 'foodtruckers/removephoto/:id', to: 'foodtruckers#removephoto', as: 'removephoto'
+  post 'foodtruckers/newmenu/:id', to: 'foodtruckers#newmenu', as: 'newmenu'
+  post 'foodtruckers/newdish/:id', to: 'foodtruckers#newdish', as: 'newdish'
+  post 'foodtruckers/removedish/:id', to: 'foodtruckers#removedish', as: 'removedishe'
+  post 'foodtruckers/newsidedish/:id', to: 'foodtruckers#newsidedish', as: 'newsidedish'
+  post 'foodtruckers/removesidedish/:id', to: 'foodtruckers#removesidedish', as: 'removesidedish'
+  post 'foodtruckers/newdesert/:id', to: 'foodtruckers#newdesert', as: 'newdesert'
+  post 'foodtruckers/removedesert/:id', to: 'foodtruckers#removedesert', as: 'removedesert'
+  post 'foodtruckers/newdrink/:id', to: 'foodtruckers#newdrink', as: 'newdrink'
+  post 'foodtruckers/removedrink/:id', to: 'foodtruckers#removedrink', as: 'removedrink'
+
   get 'generalsearch', to: 'foodtruckers#generalsearch'
   resources :foodtruckers
   resources :menus

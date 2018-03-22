@@ -58,6 +58,224 @@
 
 <div class="breadcrumb-wrap"></div>
 <div class="divide40"></div>
+	
+	<% if @foodtrucker.menu %>
+	<h3><%= @foodtrucker.menu.name %></h3><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+			<table class="table table-hover">
+				<thead>
+				 <h3>Plat</h3>
+			     <tr>
+			      	<th>Nom</th>
+			        <th>composition</th>
+			        <th>prix</th>
+			        <th></th>
+			     </tr>
+			    </thead>
+				
+				<% @foodtrucker.menu.dishes.each do |dish| %>
+				<tr>
+					<td><%= dish.name %></td>
+					<td><%= dish.composition %></td>
+					<td><%= dish.price.to_s + "€"%></td>
+					<td><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedishe_path(dish.id), method: :post, class: "btn btn-danger btn-ico" %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="col-md-6">
+                   <%= form_tag (newdish_path) do %>
+                    <form>
+                    	<h3><i class="icon-append fa fa-edit"></i>Ajouter un nouveau plat </h3>
+                      <div class="form-group">
+                       <%= label_tag 'text', 'Nom du plat :' %>
+                       <%= text_field_tag 'name', nil, placeholder: "ex: pizza 4 fromages", class: "form-control" %>                           
+                     </div>
+                      <div class="form-group">
+                       <%= label_tag 'text', 'Composition du plat :' %>
+                       <%= text_field_tag 'composition', nil, placeholder: "ex: parmesan, gorgonzola, mozzarella, chèvre", class: "form-control" %>                           
+                     </div>
+
+                      <div class="form-group">
+                       <%= label_tag 'float', 'prix du plat :' %>
+                       <%= text_field_tag 'price', nil, placeholder: "ex: 15 (ne pas indiquer la devise)", class: "form-control" %>                           
+                     </div>
+
+                     <div class="pull-right">
+                        <%= submit_tag 'Ajouter un plat', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>			
+		</div>
+	</div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+		<div class="col-md-6">
+                   <%= form_tag (newsidedish_path) do %>
+                    <form>
+                    	<h3><i class="icon-append fa fa-edit"></i>Ajouter un accompagnement </h3>
+                      <div class="form-group">
+                       <%= label_tag 'text', "Nom de l'accompagnement :" %>
+                       <%= text_field_tag 'name', nil, placeholder: "ex: portion de frites", class: "form-control" %>                           
+                     </div>
+                      <div class="form-group">
+                       <%= label_tag 'float', "Prix de l'accompagnement :" %>
+                       <%= text_field_tag 'price', nil, placeholder: "ex: 2 (ne pas indiquer la devise)", class: "form-control" %>                           
+                     </div>
+
+                     <div class="pull-right">
+                        <%= submit_tag 'Ajouter un accompagnement', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>			
+		</div>
+        <div class="col-md-6">
+			<table class="table table-hover">
+				<thead>
+				 <h3>Accompagnement</h3>
+			     <tr>
+			      	<th>Nom</th>
+			        <th>prix</th>
+			        <th></th>
+			     </tr>
+			    </thead>
+				
+				<% @foodtrucker.menu.sidedishes.each do |sidedish| %>
+				<tr>
+					<td><%= sidedish.name %></td>
+					<td><%= sidedish.price.to_s + "€"%></td>
+					<td><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removesidedish_path(sidedish.id), method: :post, class: "btn btn-danger btn-ico" %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+			<table class="table table-hover">
+				<thead>
+				 <h3>Dessert</h3>
+			     <tr>
+			      	<th>Nom</th>
+			        <th>description</th>
+			        <th>prix</th>
+			        <th></th>
+			     </tr>
+			    </thead>
+				
+				<% @foodtrucker.menu.deserts.each do |desert| %>
+				<tr>
+					<td><%= desert.name %></td>
+					<td><%= desert.description %></td>
+					<td><%= desert.price.to_s + "€"%></td>
+					<td><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedesert_path(desert.id), method: :post, class: "btn btn-danger btn-ico" %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="col-md-6">
+                   <%= form_tag (newdesert_path) do %>
+                    <form>
+                    	<h3><i class="icon-append fa fa-edit"></i>Ajouter un dessert </h3>
+                      <div class="form-group">
+                       <%= label_tag 'text', 'Nom du dessert :' %>
+                       <%= text_field_tag 'name', nil, placeholder: "ex: tiramisu", class: "form-control" %>                           
+                     </div>
+                      <div class="form-group">
+                       <%= label_tag 'text', 'Composition du plat :' %>
+                       <%= text_field_tag 'description', nil, placeholder: "ex: pâtisserie traditionnelle de la cuisine italienne", class: "form-control" %>                           
+                     </div>
+
+                      <div class="form-group">
+                       <%= label_tag 'float', 'prix du dessert :' %>
+                       <%= text_field_tag 'price', nil, placeholder: "ex: 7 (ne pas indiquer la devise)", class: "form-control" %>                           
+                     </div>
+
+                     <div class="pull-right">
+                        <%= submit_tag 'Ajouter un dessert', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>			
+		</div>
+	</div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+		<div class="col-md-6">
+                   <%= form_tag (newdrink_path) do %>
+                    <form>
+                    	<h3><i class="icon-append fa fa-glass"></i>Ajouter une boisson </h3>
+                      <div class="form-group">
+                       <%= label_tag 'text', "Nom de la boisson :" %>
+                       <%= text_field_tag 'name', nil, placeholder: "ex: Limonade", class: "form-control" %>                           
+                     </div>
+                      <div class="form-group">
+                       <%= label_tag 'float', "Prix de la boisson :" %>
+                       <%= text_field_tag 'price', nil, placeholder: "ex: 2 (ne pas indiquer la devise)", class: "form-control" %>               
+                     </div>
+
+                     <div class="pull-right">
+                        <%= submit_tag 'Ajouter une boisson', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>			
+		</div>
+        <div class="col-md-6">
+			<table class="table table-hover">
+				<thead>
+				 <h3>Boisson</h3>
+			     <tr>
+			      	<th>Nom</th>
+			        <th>prix</th>
+			        <th></th>
+			     </tr>
+			    </thead>
+				
+				<% @foodtrucker.menu.drinks.each do |drink| %>
+				<tr>
+					<td><%= drink.name %></td>
+					<td><%= drink.price.to_s + "€"%></td>
+					<td><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedrink_path(drink.id), method: :post, class: "btn btn-danger btn-ico" %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+ 	<% else %>
+<div class="container">
+		<div class="col-md-2"></div>
+            <div class="row">
+                <div class="col-md-8">
+                   <%= form_tag (newmenu_path) do %>
+                    <form>
+                    	<h3><i class="icon-append fa fa-edit"></i>Donner un nom a votre menu </h3>
+                      <div class="form-group">
+                       <i class="icon-append fa fa-book"></i>
+                       <%= label_tag 'text', 'décrivez votre cuisine' %> <br>
+                       <%= text_field_tag 'address', nil, placeholder: "ex: déclinaison de burger en tout genre", class: "form-control", title: "ex: déclinaison de burger en tout genre" %>                           
+                     </div>
+                     <div class="pull-right">
+                        <%= submit_tag 'Créer votre menu', class: "btn btn-theme-bg btn-sm",style:'color:#FFFFFF'%>
+                     </div>                    
+                     <% end %>
+                 </form>
+             </div>
+         </div>
+     </div>
+     	<% end %>
+     <div class="divide40"></div>
+
+<div class="breadcrumb-wrap"></div>
+     <div class="divide40"></div>
 <div class="container">
 		<div class="col-md-3"></div>
             <div class="row">
@@ -100,3 +318,7 @@
     	</div>
     </div>
 </div><!--container-->
+
+<div class="breadcrumb-wrap"></div>
+
+  

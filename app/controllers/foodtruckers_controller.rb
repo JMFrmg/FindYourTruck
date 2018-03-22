@@ -34,6 +34,7 @@ class FoodtruckersController < ApplicationController
     @photos = @foodtrucker.photo
     @addresses = @foodtrucker.streetadresses
     @photo = Photo.new
+    @dish = @foodtrucker.menu.dishes
   end
 
   def update
@@ -80,6 +81,66 @@ class FoodtruckersController < ApplicationController
   redirect_to edit_foodtrucker_path
   end
 
+  def addmenu
+    @menu = Menu.new(menu_params)
+    current_foodtrucker.menu << @menu
+    @menu.save
+    redirect_to edit_foodtrucker_path
+  end
+
+  def newdish
+    @dish = Dish.new(dishes_params)
+    current_menu.dishes << @dish
+    @dish.save
+    redirect_to edit_foodtrucker_path
+  end
+
+  def removedish
+    @dish = Dish.find(params[:id])
+    @dish.destroy
+    redirect_to edit_foodtrucker_path(current_foodtrucker)
+  end
+
+  def newsidedish
+    @sidedish = Sidedish.new(dishes_params)
+    current_menu.sidedishes << @sidedish
+    @sidedish.save
+    redirect_to edit_foodtrucker_path
+  end
+
+  def removesidedish
+    @sidedish = Sidedish.find(params[:id])
+    @sidedish.destroy
+    redirect_to edit_foodtrucker_path(current_foodtrucker)
+  end
+
+    def newdesert
+    @desert = Desert.new(dishes_params)
+    current_menu.deserts << @desert
+    @desert.save
+    redirect_to edit_foodtrucker_path
+  end
+
+  def removedesert
+    @desert = Desert.find(params[:id])
+    @desert.destroy
+    redirect_to edit_foodtrucker_path(current_foodtrucker)
+  end
+
+  def newdrink
+    @drink = Drink.new(dishes_params)
+    current_menu.drinks << @drink
+    @drink.save
+    redirect_to edit_foodtrucker_path
+  end
+
+  def removedrink
+    @drink = Drink.find(params[:id])
+    @drink.destroy
+    redirect_to edit_foodtrucker_path(current_foodtrucker)
+  end
+
+
   private
 
   def foodtrucker_params
@@ -93,5 +154,10 @@ class FoodtruckersController < ApplicationController
   def findphoto
     @photo = Photo.find(params[:id])
   end
+
+  def dishes_params
+    params.permit(:name, :composition, :price, :description)
+  end
+
 
 end

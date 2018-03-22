@@ -76,8 +76,10 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <%= link_to " Foodtruck ", edit_foodtrucker_path, class: "btn btn-theme-bg btn-sm" %><div class="col-md-6">
-                            <%= link_to " Utilisateur ", edit_foodtrucker_registration_path, class: "btn btn-theme-bg btn-sm" %>         
+                            <% if foodtrucker_signed_in? %>
+                            <%= link_to " Foodtruck ", edit_foodtrucker_path(current_foodtrucker.id), class: "btn btn-theme-bg btn-sm" %><div class="col-md-6">
+                            <%= link_to " Utilisateur ", edit_foodtrucker_registration_path, class: "btn btn-theme-bg btn-sm" %>      
+                            <% end %>   
                             
                           </div>
                         </div>
