@@ -1,30 +1,32 @@
-<div style='width: 100%;'>
-  <div id="sidebar_builder" style='width: 100%; height: 500px;'></div>
+<div class="googlemapscontainer">
+
+<div id="sidebar_container">
 </div>
-<div id='sidebar_container'>
+<div id='sidebar_builder'>
+</div>
 </div>
 
 <script type="text/javascript">
-function createSidebarLi(json){
-  return ("<li><a>" + json.infowindow + "</a></li>");
-};
+  function createSidebarLi(json){
+    return ("<div class='media'><div class='media-left'><img class='media-object' src='" + json.picture.url + "'></div>" + "<div class='media-body'><h4 class='media-heading'>" + "<li><a>" + json.infowindow + "</a></li>" + "</h4><p>" + json.marker_title "</p></div></div>");
+  };
 
-function bindLiToMarker($li, marker){
-  $li.on('click', function(){
-    handler.getMap().setZoom(4);
-    marker.setMap(handler.getMap()); //because clusterer removes map property from marker
-    marker.panTo();
-    google.maps.event.trigger(marker.getServiceObject(), 'click');
-  })
-};
+  function bindLiToMarker($li, marker){
+    $li.on('click', function(){
+      handler.getMap().setZoom(16);
+      marker.setMap(handler.getMap());
+      marker.panTo();
+      google.maps.event.trigger(marker.getServiceObject(), 'click');
+    })
+  };
 
-function createSidebar(json_array){
-  _.each(json_array, function(json){
-    var $li = $( createSidebarLi(json) );
-    $li.appendTo('#sidebar_container');
-    bindLiToMarker($li, json.marker);
-  });
-};
+  function createSidebar(json_array){
+    _.each(json_array, function(json){
+      var $li = $( createSidebarLi(json) );
+      $li.appendTo('#sidebar_container');
+      bindLiToMarker($li, json.marker);
+    });
+  };
 
   var handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'sidebar_builder'}}, function(){
@@ -37,15 +39,20 @@ function createSidebar(json_array){
     var markerp = handler.addMarker({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
-      infowindow: "Myself"
-    });
-    handler.map.centerOn(markerp);
-    markers = handler.addMarkers(json_array);
-    _.each(json_array, function(json, index){
-    json.marker = markers[index];
-    });
+      infowindow: "It's-a Me, Mario! <br/> Votre position (approximative)",
+      animation: google.maps.Animation.DROP,
+      picture: {
+            url: "https://png.icons8.com/color/50/000000/street-view.png",
+            width:  50,
+            height: 50
+          }
+      });
+        handler.map.centerOn(markerp);
+        handler.getMap().setZoom(14);
+          markers = handler.addMarkers(json_array);
+              _.each(json_array, function(json, index){
+                  json.marker = markers[index];
+                  });
     createSidebar(json_array);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
     };
 </script>

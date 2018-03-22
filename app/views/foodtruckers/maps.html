@@ -1,3 +1,17 @@
+<div class="media">
+"<% @street.each do |f| %>"
+<div class="media-left">
+  "<%=  image_tag f.foodtrucker.avatar.url, class: "media-object" %>"
+</div>
+<div class="media-body">
+</div>
+<% end %>
+</div>
+
+"<div class='media-left'><% @street.each do |f| %><%=  image_tag f.foodtrucker.avatar.url, class: 'media-object' %></div>" + "<div class='media-body'><h4 class='media-heading'><li><a>" + json.infowindow + "</a></li></h4>" + "<% end %></div>"
+
+"<li><div class='media-left'><% @street.each do |f| %><%=  image_tag f.foodtrucker.avatar.url, class: 'media-object' %></div><div class='media-body'><h4 class='media-heading'><a>" + json.infowindow + "</a></h4><% end %></div></li>"
+
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition();
 <!DOCTYPE html>
