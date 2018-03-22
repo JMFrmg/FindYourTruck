@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :ensure_login, only: [:show]
   def index
-  	if logged_in? && current_user.cart
+  	if user_logged_in? && current_user.cart
 	  	current_user.cart.destroy
 	end
   	@foodtruckers = Foodtrucker.all

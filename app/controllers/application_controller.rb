@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     !current_user.nil? || current_foodtrucker.nil?
   end
 
+  def admin_logged_in?
+    !current_admin.nil?
+  end
+
   def user_logged_in?
     !current_user.nil?
   end
@@ -34,6 +38,12 @@ class ApplicationController < ActionController::Base
     return true if foodtrucker_logged_in?
     session[:return_to] = request.fullpath
     redirect_to new_foodtrucker_session_path and return false
+  end
+
+  def ensure_right_foodtrucker_logged
+    return true if (foodtrucker_logged_in? and (current_foodtrucker.id.to_s == params[:id]))
+    session[:return_to] = request.fullpath
+    redirect_to edit_foodtrucker_path(current_foodtrucker) and return false
   end
 
 
