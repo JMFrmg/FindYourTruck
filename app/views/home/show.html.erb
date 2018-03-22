@@ -170,8 +170,39 @@
                 </div>
             </div>
             <div class="divide70"></div>
-            <div class="row">
+            <div>
+              <table>
+                <% @posts.each do |post| %>
+                <tr>
+                  <td><%= post.content %></td>
+                  <td>Posté le : <%= post.created_at %> par : <%=post.user.username%></td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
 
+            <%= form_tag (posts_path(foodtrucker_id: @foodtrucker.id)) do %>
+ 
+              <% if @post.errors.any? %>
+                <div id="error_explanation">
+                  <h2>
+                    <%= pluralize(@gpost.errors.count, "error") %> prohibited
+                    this article from being saved:
+                  </h2>
+                  <ul>
+                    <% @post.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              
+              <%= label_tag 'text', 'Votre avis :' %>
+              <%= text_field_tag 'content' %>
+              <%= submit_tag 'Poster!' %>
+            <% end %>
+
+            <div class="row">
 
                 </div><!--services col-->
             </div><!--services row-->

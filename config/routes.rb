@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :foodtruckers
   resources :menus
   resources :dishs
+  resources :posts
 
   post 'carts/adddish/:id', to: 'carts#adddish', as: 'addtocart'
   post 'carts/removedish/:id', to: 'carts#removedish', as: 'removedish'
