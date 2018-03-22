@@ -27,21 +27,13 @@ class FoodtruckersController < ApplicationController
     end
   end
 
-  def get_foodtrucker
-    Foodtrucker.find(params[:id])
-  end
-
-  def actual?
-    Foodtrucker.find(params[:foodtrucker_id]).streetadresses.each do |street|
-      if street.actual
-        return true
-      end
-    end
-    return false
-  end
+  
 
   def edit
     @foodtrucker = Foodtrucker.find(params[:id])
+    if !@foodtrucker.menu
+      @foodtrucker.menu = Menu.create
+    end
     @photos = @foodtrucker.photos
     @addresses = @foodtrucker.streetadresses
     @photo = Photo.new
@@ -166,6 +158,19 @@ class FoodtruckersController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:image)
+  end
+
+  def get_foodtrucker
+    Foodtrucker.find(params[:id])
+  end
+
+  def actual?
+    Foodtrucker.find(params[:foodtrucker_id]).streetadresses.each do |street|
+      if street.actual
+        return true
+      end
+    end
+    return false
   end
 
   def findphoto
