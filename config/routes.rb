@@ -31,6 +31,13 @@ Rails.application.routes.draw do
   resources :dishs
   resources :posts
 
+  resources :posts do 
+    member do
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
+    end
+  end
+
   post 'carts/adddish/:id', to: 'carts#adddish', as: 'addtocart'
   post 'carts/removedish/:id', to: 'carts#removedish', as: 'removedish'
   post 'carts/buy/:id', to: 'carts#buy', as: 'buycart'
