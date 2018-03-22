@@ -1,5 +1,4 @@
 <div class="googlemapscontainer">
-
 <div id="sidebar_container">
 </div>
 <div id='sidebar_builder'>
@@ -8,7 +7,7 @@
 
 <script type="text/javascript">
   function createSidebarLi(json){
-    return ("<div class='media'><div class='media-left'><img class='media-object' src='" + json.picture.url + "'></div>" + "<div class='media-body'><h4 class='media-heading'>" + "<li><a>" + json.infowindow + "</a></li>" + "</h4><p>" + json.marker_title "</p></div></div>");
+    return ("<div class='media'><div class='media-left'><img class='media-object' src='" + json.picture.url + "'></div>" + "<div class='media-body'><h4 class='media-heading'>" + "<a>" + json.infowindow + "</a>" + "</h4><p>" + json.marker_title + "</p></div></div>");
   };
 
   function bindLiToMarker($li, marker){
@@ -42,7 +41,7 @@
       infowindow: "It's-a Me, Mario! <br/> Votre position (approximative)",
       animation: google.maps.Animation.DROP,
       picture: {
-            url: "https://png.icons8.com/color/50/000000/street-view.png",
+            url: "https://png.icons8.com/dusk/50/000000/street-view.png",
             width:  50,
             height: 50
           }
