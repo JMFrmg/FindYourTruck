@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DeviseCreateAdmins < ActiveRecord::Migration[5.1]
-  def change
+  def self.up
     create_table :admins do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -20,6 +20,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.1]
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+      t.integer  :failed_attempts, default: 0
+      t.string   :unlock_token
+      t.datetime :locked_at
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -40,5 +43,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.1]
     add_index :admins, :reset_password_token, unique: true
     # add_index :admins, :confirmation_token,   unique: true
     # add_index :admins, :unlock_token,         unique: true
+  end
+
+  def self.down
+    drop_table :admins
   end
 end

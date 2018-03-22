@@ -1,0 +1,20 @@
+<table>
+	<% @foodtruckers.each do |foodtrucker| %>
+	<tr>
+		<td><%= foodtrucker.username %></td>
+		<td><%= link_to 'Editer le profil', edit_foodtrucker_registration_path(foodtrucker) %></td>
+		<td><%= link_to 'Editer le foodtruck', edit_foodtrucker_path(foodtrucker) %></td>
+		
+	</tr>
+	<% end %>
+</table>
+<table>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= user.username %></td>
+		<td><%= link_to 'Editer le profil', edit_user_registration_path(user) %></td>
+
+		
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,22 @@
+<%= form_with(model: @foodtruck, local: true) do |form| %>
+
+ <p><%= form.label :email %><br />
+   <%= form.text_area :email %></p>
+
+<p><%= form.label :username %><br />
+   <%= form.text_area :username %></p>
+
+<p><%= form.label :password %><br />
+   <%= form.text_area :password %></p>
+
+<p><%= form.label :password_confirmation %><br />
+   <%= form.text_area :password_confirmation %></p>
+
+<p><%= form.label :menu %><br />
+   <%= form.text_area @foodtrucker.menu.name %></p>
+
+ <p><%= form.submit %></p>
+  <p><%= link_to 'Supprimer le compte', @foodtrucker, method: :delete %></p>
+ 
+<% end %>
+
