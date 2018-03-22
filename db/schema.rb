@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20180321130618) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "Menu non communiqué"
     t.string "picture"
     t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
