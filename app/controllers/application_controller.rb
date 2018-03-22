@@ -35,13 +35,13 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_foodtrucker_login
-    return true if foodtrucker_logged_in?
+    return true if (foodtrucker_logged_in? || admin_logged_in?)
     session[:return_to] = request.fullpath
     redirect_to new_foodtrucker_session_path and return false
   end
 
   def ensure_right_foodtrucker_logged
-    return true if (foodtrucker_logged_in? and (current_foodtrucker.id.to_s == params[:id]))
+    return true if ((foodtrucker_logged_in? and (current_foodtrucker.id.to_s == params[:id])) || admin_logged_in?)
     session[:return_to] = request.fullpath
     redirect_to edit_foodtrucker_path(current_foodtrucker) and return false
   end

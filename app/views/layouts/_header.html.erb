@@ -22,6 +22,9 @@
                     <% elsif foodtrucker_signed_in? %>
                     <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#profil">Profil</button></li>
                     <li><%= link_to content_tag(:i, nil, class: 'pe-7s-user') + " Deconnexion ", destroy_foodtrucker_session_path, :method => :delete %></li>
+                    <% elsif admin_signed_in? %>
+                    <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#profil">Profil</button></li>
+                    <li><%= link_to content_tag(:i, nil, class: 'pe-7s-user') + " Deconnexion ", destroy_admin_session_path, :method => :delete %></li>
                     <% else %>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-theme-bg btn-sm" data-toggle="modal" data-target="#connexion">Connection</button>
