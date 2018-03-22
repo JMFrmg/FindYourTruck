@@ -33,7 +33,7 @@ class FoodtruckersController < ApplicationController
 
   def edit
     @foodtrucker = Foodtrucker.find(params[:id])
-    @photos = @foodtrucker.photo
+    @photos = @foodtrucker.photos
     @addresses = @foodtrucker.streetadresses
     @photo = Photo.new
   end
@@ -43,18 +43,18 @@ class FoodtruckersController < ApplicationController
 
   def addphoto
     @photo = Photo.new(photo_params)
-    Foodtrucker.find(params[:id]).photo = @photo
+    Foodtrucker.find(params[:id]).photos << @photo
     if @photo.save
       flash[:success] = "Votre photo a bien été envoyée!"
-      redirect_to edit_foodtrucker_path
+      redirect_to edit_foodtrucker_path(params[:id])
     else
-      redirect_to edit_foodtrucker_path
+      redirect_to edit_foodtrucker_path(params[:id])
     end
   end
 
   def removephoto
     findphoto.delete
-    redirect_to edit_foodtrucker_path
+    redirect_to edit_foodtrucker_path(params[:foodtrucker_id])
   end
 
   def addaddress

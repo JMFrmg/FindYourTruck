@@ -13,19 +13,34 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+    !current_user.nil? || current_foodtrucker.nil?
+  end
+
+  def user_logged_in?
     !current_user.nil?
   end
 
-  def ensure_login
-    return true if logged_in?
+  def foodtrucker_logged_in?
+    !current_foodtrucker.nil?
+  end
+
+  def ensure_user_login
+    return true if user_logged_in?
     session[:return_to] = request.fullpath
     redirect_to new_user_session_path and return false
   end
 
   def ensure_foodtrucker_login
-    return true if logged_in?
+    return true if foodtrucker_logged_in?
     session[:return_to] = request.fullpath
     redirect_to new_foodtrucker_session_path and return false
+  end
+
+
+  def ensure_login
+    return true if logged_in?
+    session[:return_to] = request.fullpath
+    redirect_to new_user_session_path and return false
   end
 
     protected
