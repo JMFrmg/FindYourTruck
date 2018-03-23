@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
+  before_action :ensure_user_login
   def create
     @post = Post.new(post_params) do |post|
       post.user = current_user
-      post.foodtrucker = get_foodtrucker_by_ft_id
+      post.foodtrucker = get_foodtrucker("foodtrucker_id")
     end
     if @post.save
-      redirect_to showfoodtrucker_path(get_foodtrucker_by_ft_id)
+      redirect_to showfoodtrucker_path(get_foodtrucker("foodtrucker_id"))
     else
-      redirect_to showfoodtrucker_path(get_foodtrucker_by_ft_id), notice: @post.errors.full_messages.first
+      redirect_to showfoodtrucker_path(get_foodtrucker("foodtrucker_id")), notice: @post.errors.full_messages.first
     end
   end
 
@@ -33,7 +34,4 @@ class PostsController < ApplicationController
   	Post.find(params[:id]).foodtrucker
   end
 
-  def get_foodtrucker_by_ft_id
-  	Foodtrucker.find(params[:foodtrucker_id])
-  end
 end
