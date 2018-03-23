@@ -42,7 +42,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <%= link_to " Utilisateur ", new_user_session_path, class: "btn btn-theme-bg btn-sm" %> <div class="col-md-6">        
+                            <%= link_to " Utilisateur ", new_user_session_path, class: "btn btn-theme-bg btn-sm" %> <div class="col-md-6">
                             <%= link_to " Foodtrucker ", new_foodtrucker_session_path, class: "btn btn-theme-bg btn-sm" %>
                           </div>
                         </div>
@@ -80,9 +80,9 @@
                           </div>
                           <div class="modal-body">
                             <% if foodtrucker_signed_in? %>
-                            <%= link_to " Foodtruck ", edit_foodtrucker_path(current_foodtrucker.id), class: "btn btn-theme-bg btn-sm" %><div class="col-md-6">
-                            <%= link_to " Utilisateur ", edit_foodtrucker_registration_path, class: "btn btn-theme-bg btn-sm" %>      
-                            <% end %>   
+                            <%= link_to " La page du Foodtruck ", edit_foodtrucker_path(current_foodtrucker.id), class: "btn btn-theme-bg btn-sm" %><div class="col-md-6">
+                            <%= link_to " Compte ", edit_foodtrucker_registration_path, class: "btn btn-theme-bg btn-sm" %>
+                            <% end %>
                           </div>
                         </div>
                       </div>

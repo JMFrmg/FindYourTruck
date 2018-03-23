@@ -4,10 +4,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 margin30">
                         <h3>A Propos</h3>
-                        <p>
-                            Projet final THP. Adrien Matthieu Pierre Tina
-                        </p>
-
+                        <p>Projet final THP. <br/>Adrien Matthieu Pierre Tina</p>
                     </div><!--col-->
                     <div class="col-md-3 col-sm-6 margin30">
                       <h3>Derniers ajouts</h3>
@@ -24,7 +21,7 @@
                         <% @foodtruckers.last(4).each do |f| %>
                         <ul class="list-unstyled footer-news">
                             <li>
-                                <%= f.username %>
+                                <%= link_to f.username,showfoodtrucker_path(f) %>
                             </li>
                         </ul>
                         <% end %>
@@ -51,13 +48,13 @@
                              <h3>  <a href="#"><img src="img/logo.png" alt=""></a></h3>
                             <ul class="list-inline footer-social">
                                 <li>
-                                    <a href="#" class="social-icon si-dark si-gray-round si-colored-facebook">
+                                    <a href="https://www.facebook.com/Find-Your-Truck-2025042367754486/" class="social-icon-sm si-dark si-gray-round si-colored-facebook">
                                         <i class="fa fa-facebook"></i>
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="social-icon si-dark si-gray-round si-colored-twitter">
+                                    <a href="https://twitter.com/PierreOssun" class="social-icon-sm si-dark si-gray-round si-colored-twitter">
                                         <i class="fa fa-twitter"></i>
                                         <i class="fa fa-twitter"></i>
                                     </a>

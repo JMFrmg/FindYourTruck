@@ -1,32 +1,40 @@
 class FoodtruckersController < ApplicationController
 
   before_action :ensure_right_foodtrucker_logged, only: [:edit, :update, :addphoto, :addaddress]
-  
+
 
   def index
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
-    @street = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true)
-    @hash = Gmaps4rails.build_markers @street do |street, marker|
-      user_path = showfoodtrucker_path(street.foodtrucker)
-      marker.lat street.latitude
-      marker.lng street.longitude
-      marker.infowindow "<b>#{user_path}</b>"
-      marker.picture({
-                :url => "https://png.icons8.com/color/50/000000/food-truck.png",
-                :width   => 50,
-                :height  => 50
-               })
-        if street.foodtrucker.menu
-          marker.title street.foodtrucker.menu.name
-        else
-          marker.title "Ce Foodtruck n'a pas renseigné encore de menu"
+    if    @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).exists?
+      @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
+      @street = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true)
+        @hash = Gmaps4rails.build_markers @street do |street, marker|
+          user_path = view_context.link_to street.foodtrucker.username.capitalize, showfoodtrucker_path(street.foodtrucker)
+          marker.lat street.latitude
+          marker.lng street.longitude
+          marker.infowindow "<b>#{user_path}</b>"
+          marker.picture({
+                    :url => "https://png.icons8.com/color/50/000000/food-truck.png",
+                    :width   => 50,
+                    :height  => 50
+                   })
+            if street.foodtrucker.menu
+              marker.title street.foodtrucker.menu.name
+            else
+              marker.title "Ce Foodtruck n'a pas renseigné encore de menu"
+            end
         end
+      else
+        flash[:notice] = "Aucun Foodtrucker de ce nom trouvé"
+        redirect_to root_path
     end
   end
 
   def generalsearch
     @street = Street.where(actual: true).all
     @hash = Gmaps4rails.build_markers @street do |street, marker|
+      user_path = view_context.link_to street.foodtrucker.username.capitalize, showfoodtrucker_path(street.foodtrucker)
+      menu_name = street.foodtrucker.menu.name
       marker.lat street.latitude
       marker.lng street.longitude
       marker.infowindow street.foodtrucker.username.capitalize
@@ -35,11 +43,7 @@ class FoodtruckersController < ApplicationController
                 :width   => 50,
                 :height  => 50
                })
-        if street.foodtrucker.menu
-          marker.title street.foodtrucker.menu.name
-        else
-          marker.title "Ce Foodtruck n'a pas renseigné encore de menu"
-        end
+          marker.title "#{menu_name}<br/><b>Accedez a la page de #{user_path}</b>"
     end
   end
 
