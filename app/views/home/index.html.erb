@@ -44,7 +44,7 @@
                      data-speed="500"
                      data-start="2100"
                      data-easing="Sine.easeOut">
-                    <a href="#" class="btn btn-theme-bg btn-lg">Retrouver</a>
+                     <button type="button" class="btn btn-theme-bg btn-lg" data-toggle="modal" data-target="#retrouver">Retrouver</button>
                 </div>
 
             </li>
@@ -71,9 +71,7 @@
                      data-speed="1000"
                      data-start="1600"
                      data-easing="easeOutExpo">
-
-                    Navigez parmis les menus proposés<br>  Contactez, regalez-vous et laisser un avis
-
+                    Navigez parmis les menus proposés<br>  Regalez-vous et laissez un avis
                 </div>
                 <div class="caption sfb rev-buttons tp-resizeme"
                      data-x="center"
@@ -81,7 +79,7 @@
                      data-speed="500"
                      data-start="1800"
                      data-easing="Sine.easeOut">
-                    <a href="#" class="btn btn-theme-bg btn-lg">Découvrir</a>
+                    <button type="button" class="btn btn-theme-bg btn-lg" data-toggle="modal" data-target="#decouvrir">Découvrir</button>
                 </div>
             </li>
             <!-- SLIDE -->
@@ -89,7 +87,7 @@
                 <!-- MAIN IMAGE -->
                 <%= image_tag("bg-1.jpg", :alt => "darkblurbg", :style => "data-bgfit: cover; data-bgposition: left top; data-bgrepeat: no-repeat") %>
                 <!-- LAYER NR. 1 -->
-                <div class="caption left-tile-text sfr tp-resizeme"
+                <div class="caption title-2 sfr tp-resizeme"
                      data-x="30"
                      data-y="25"
                      data-speed="600"
@@ -208,13 +206,30 @@
   </div>
 </div>
 </div>
+<div class="modal fade" id="retrouver" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Retrouvez votre Foodtruck</h5>
+        <div class="modal-body">
+          <%= form_tag foodtruckers_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], :class => "form-control" , :placeholder => "Rechercher un Food-truck" %></br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Find it !", :class => "btn btn-theme-bg btn-lg"%>
+        <% end %>
+    </div>
+  </div>
+</div>
+</div>
 <div class="divide60"></div>
         <div class="container">
           <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
               <div class="center-heading">
                 <%= form_tag foodtruckers_path, :method => 'get' do %>
-                <%= text_field_tag :search, params[:search], :class => "form-control" , :placeholder => "Rechercher un food truck" %></br>
+                <%= text_field_tag :search, params[:search], :class => "form-control" , :placeholder => "Rechercher un Food-truck" %></br>
                 <%= submit_tag "Find it !", :class => "btn btn-theme-bg btn-lg"%>
               <% end %>
           </div><!-- /.row -->
