@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :sanitize_devise_parameters, if: :devise_controller?
     before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :essentials_variables
 
   def sanitize_devise_parameters
   		devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :postalcode])
@@ -10,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def current_menu
       current_foodtrucker.menu
+  end
+
+  def essentials_variables
+    @foodtruckers = Foodtrucker.all
   end
 
   def logged_in?
