@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post 'foodtruckers/beunactual/:id', to: 'foodtruckers#beunactual', as: 'beunactual'
   post 'foodtruckers/:id/addphoto/', to: 'foodtruckers#addphoto', as: 'addphoto'
   post 'foodtruckers/removephoto/:id', to: 'foodtruckers#removephoto', as: 'removephoto'
-  post 'foodtruckers/newmenu/:id', to: 'foodtruckers#newmenu', as: 'newmenu'
+  post 'foodtruckers/updatemenu/:id', to: 'foodtruckers#updatemenu', as: 'updatemenu'
   post 'foodtruckers/newdish/:id', to: 'foodtruckers#newdish', as: 'newdish'
   post 'foodtruckers/removedish/:id', to: 'foodtruckers#removedish', as: 'removedishe'
   post 'foodtruckers/newsidedish/:id', to: 'foodtruckers#newsidedish', as: 'newsidedish'

@@ -98,10 +98,9 @@ class FoodtruckersController < ApplicationController
   redirect_to edit_foodtrucker_path
   end
 
-  def addmenu
-    @menu = Menu.new(menu_params)
-    current_foodtrucker.menu << @menu
-    @menu.save
+  def updatemenu
+    @menu = Foodtrucker.find(params[:id]).menu
+    @menu.update(params.permit(:name, :image))
     redirect_to edit_foodtrucker_path
   end
 
