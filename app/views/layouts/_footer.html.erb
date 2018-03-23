@@ -9,46 +9,27 @@
                         </p>
 
                     </div><!--col-->
-                      <div class="col-md-3 col-sm-6 margin30">
-                        <h3>Photo recentes</h3>
-                        <div class="footer-work">
-                            <a href="#">
-                                <img src="img/img-1.jpg" alt="" class="img-responsive">
-                            </a>
-                            <a href="#">
-                                <img src="img/img-2.jpg" alt="" class="img-responsive">
-                            </a>
-                            <a href="#">
-                                <img src="img/img-3.jpg" alt="" class="img-responsive">
-                            </a>
-                            <a href="#">
-                                <img src="img/img-4.jpg" alt="" class="img-responsive">
-                            </a>
-                            <a href="#">
-                                <img src="img/img-5.jpg" alt="" class="img-responsive">
-                            </a>
-                            <a href="#">
-                                <img src="img/img-6.jpg" alt="" class="img-responsive">
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div><!--col-->
+                    <div class="col-md-3 col-sm-6 margin30">
+                      <h3>Derniers ajouts</h3>
+                      <% @dish = Dish.all %>
+                      <% @dish.last(4).each do |f| %>
+                      <ul class="list-unstyled footer-news">
+                          <li>
+                              <%= f.name %>
+                          </li>
+                      </ul>
+                      <% end %>
+                      </div><!--col-->
                       <div class="col-md-3 col-sm-6 margin30">
                         <h3>Derniers Trucks Inscris</h3>
+                        <% @foodtruckers = Foodtrucker.all %>
+                        <% @foodtruckers.last(4).each do |f| %>
                         <ul class="list-unstyled footer-news">
                             <li>
-                                <a href="#">Truck.last</a>
-                            </li>
-                             <li>
-                                <a href="#">Truck.last</a>
-                            </li>
-                             <li>
-                                <a href="#">Truck.last</a>
-                            </li>
-                             <li>
-                                <a href="#">Truck.last</a>
+                                <%= f.username %>
                             </li>
                         </ul>
+                        <% end %>
 
                     </div><!--col-->
                       <div class="col-md-3 col-sm-6 margin30">

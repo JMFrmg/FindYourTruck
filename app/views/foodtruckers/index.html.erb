@@ -13,37 +13,25 @@
 	<% end %>
 </table>
 
-<style>
-      #map {
-        height: 600px;
-				width: 100%;
-			 }
-</style>
-<%= content_tag "div", id: 'address_information', data: {address: @address} do %>
-<div id="map"></div>
-<% end %>
-<script>
-		 jQuery(document).ready(function(){
-			 var map = new GMaps({
- 				el: '#map',
- 			});
 
-				var geocode = new GMaps.geocode({
-			  address: $('#address_information').data('address'),
-			  callback: function(results, status) {
-			    if (status == 'OK') {
-			      var latlng = results[0].geometry.location;
-			      map.setCenter(latlng.lat(), latlng.lng());
-			      map.addMarker({
-							animation: google.maps.Animation.DROP,
-			        lat: latlng.lat(),
-			        lng: latlng.lng(),
-							infoWindow: {
-								content: '<% @foodtrucker.each do |f| %><%= f.username %><% end %>'
-							}
-			      });
-			    }
-			  }
-			});
-    });
-		 </script>
+<div style='width: 800px;'>
+  <div id="one_marker" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'one_marker'}}, function(){
+
+	var json_array = <%=raw @hash.to_json %>
+
+		var markers = handler.addMarkers(json_array);
+
+				_.each(json_array, function(json, index){
+						json.marker = markers[index];
+						});
+
+						handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+						handler.getMap().setZoom(14);
+});
+</script>

@@ -5,17 +5,14 @@ class FoodtruckersController < ApplicationController
 
   def index
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
-    @address = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true).last.address
-  end
-
-  def generalsearch
-    @street = Street.where(actual: true).all
+    @street = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true)
     @hash = Gmaps4rails.build_markers @street do |street, marker|
+      user_path = view_context.link_to street.foodtrucker.username.capitalize, showfoodtrucker_path(street.foodtrucker)
       marker.lat street.latitude
       marker.lng street.longitude
-      marker.infowindow street.foodtrucker.username.capitalize
+      marker.infowindow "<b>#{user_path}</b>"
       marker.picture({
-                :url => "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASnSURBVGhD7Zh9TFtVGMZrp50COrwaRIpCnCPLZAVKaUEWWwsMhiwqY8TMVgOauS26FpcM59eWzMEmW3ARTGR/ODYXBbOYaOZHNOMPnBtZJNMo+4hzmmgyBgyQljKg9/Wcy7m3veVAe0rpMLlP8svNuec9532ee89NAypFihQpUqRIEUW8oyAPsY93WD+MIs2o51ZwmOOJjbkJbbYfnAVws+Cd1n6+pjCX2AlP/FarjbZ5tEFvp5ffVhRLbLELPY1O2sY3A76mYAuxxa4bVVkj49V6mE8GSpOhf402OCXaPmKLXa7yVN719IMwn/yhU8PldFVIXCtOqiTW2OQfZOzte2Gsnps7dRy4yqcHadVx0KRLoHJy5R1CzVULd4FYY5MYxG3XAvymAuiJDJ5tCdOCrM7SQZo+l8rGzIeFmr8Mi73EGpvEIDf2clRD4TL+URxTkIysHDi/cqqurzTRRuyFLjHIxJEY6D+pAfcpNcBZFfzbuUi4igx33iobB857fpxaN3ZaDdc6NDD5xWKmIJhjuruFul4Ld4nYC11iEO+h2wA+Q6YIPzXeKRuf2X+XbBw4f6XldtkY2lXMQTaLxytbw368pDfSECOZ8CITrdsTZcZaXk2SjY+geVwnjk/svgdcx9BbImNvi4Y5SJY+By6kT9UOliVXEYuhSfrYN2ihqy4eeppiYUfVQ5BhMkLbGwlw8YMYeN+RDMsNudDs1ArjT9F9PP86qsP13+zmIP+xbKiuWA7nDsbBmYYlMFp1P3MQzCe6eKH2qpX7nVgMTWIQTGWenro5K3qDSQrBGuTlzKVC7Z96DU8shqaFFkSvN8Cl9FuE+oE1D2wiNoNroQXBtIvHy8JdITaDK5pBWPknLxZGK5dd97yU9uVEQ0o5sUzXQg+C13uc9wk/st4OjXeylbsM9SmpxL5P/6cgIhPH41zEvk9ikOGOz2Ggpxv6I8TQ+e55C8KfXQTEvk9ikKFzp2CwrzeiRCrI6Ivox/hXvyDd6ulBJjflj3i3rILxXc/A+DvPRxS8L2b4iSQYLE1kxrVuqbSHtzYHvLsyp3grw03s+wQO6xDtz85I4l6XKr0dFsZsj1D3w56JfZ+CBfm52gKHK1bBwSfzhSse0+pmI1iQrrI0OFScDgeKMoQrHuP7EQnifsUK+9Y+CnaLaRrvrs0X5mnraMwUpO+pFKgryqT2qEf3rz87xyA8YqYQIng+cN1M0IKMIOoK6SFE6osN1P2oQXhHwd+Bhfj4+G9Ya6+A93bUCFf/+7+8YJatmwlakK6yZbK9WHrgf+gR+z6hmwcCC/G34GuwHr5v/1hiu83XqBXVBa6lQQuCv4Vwe/AOaxux7xPs3KnmnYWV6M3sQUV7MW+W5l0UN2pET8m/SWOtU2qC68Q1s+GxrfjBs2HFaX/2lGQPhNMD+dwMG8tiiP3ZZTMbm8WN8NMRG3zXdlT2tOxmUxNZwqxo9EBNckukjRDC+X2tRt4A8dzjxtVkCbOi0UOQzWz61n/D6Ri/JqVhKxo9VOsLs5fYLMavaA3QsTiB50lp2IpGD0l2S04xPs+I4/i84jGZipii0UORIkWKFEVQKtV/5h1tu2aOOyYAAAAASUVORK5CYII=",
+                :url => "https://png.icons8.com/color/50/000000/food-truck.png",
                 :width   => 50,
                 :height  => 50
                })
@@ -27,7 +24,26 @@ class FoodtruckersController < ApplicationController
     end
   end
 
-  
+  def generalsearch
+    @street = Street.where(actual: true).all
+    @hash = Gmaps4rails.build_markers @street do |street, marker|
+      marker.lat street.latitude
+      marker.lng street.longitude
+      marker.infowindow street.foodtrucker.username.capitalize
+      marker.picture({
+                :url => "https://png.icons8.com/color/50/000000/food-truck.png",
+                :width   => 50,
+                :height  => 50
+               })
+        if street.foodtrucker.menu
+          marker.title street.foodtrucker.menu.name
+        else
+          marker.title "Ce Foodtruck n'a pas renseigné encore de menu"
+        end
+    end
+  end
+
+
 
   def edit
     @foodtrucker = Foodtrucker.find(params[:id])
@@ -122,7 +138,7 @@ class FoodtruckersController < ApplicationController
     redirect_to edit_foodtrucker_path(current_foodtrucker)
   end
 
-    def newdesert
+  def newdesert
     @desert = Desert.new(dishes_params)
     current_menu.deserts << @desert
     @desert.save
