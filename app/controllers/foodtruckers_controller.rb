@@ -1,7 +1,7 @@
 class FoodtruckersController < ApplicationController
 
-  before_action :ensure_foodtrucker_login, only: [:edit, :update, :addphoto, :addaddress, :beactual]
-  before_action :ensure_right_foodtrucker_logged, only: [:edit, :update, :addphoto, :addaddress, :beactual]
+  before_action :ensure_foodtrucker_login, only: [:edit, :update, :addphoto, :addaddress]
+  before_action :ensure_right_foodtrucker_logged, only: [:edit, :update, :addphoto, :addaddress]
 
   def index
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
