@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
   end
 
   def edit_foodtrucker
-  	@foodtrucker = Foodtrucker.find(params[:id])
+  	@foodtrucker = get_foodtruck("id")
   end
 
 end

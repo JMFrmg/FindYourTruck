@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  
+  before_action :ensure_user_login
 
   def adddish
   	@cart = current_cart
@@ -15,10 +15,6 @@ class CartsController < ApplicationController
   	redirect_to showfoodtrucker_path(findfoodtruck(@dish))
   end
 
-  def destroy
-  	@cart = current_cart
-  	@cart.destroy
-  end
 
   def buy
     require 'stripe'
@@ -41,7 +37,7 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
-  UserMailer.buy_email(current_user, @dishes, findfoodtruck(@dishes[1])).deliver_now!
+    UserMailer.buy_email(current_user, @dishes, findfoodtruck(@dishes[1])).deliver_now!
  
 
     flash[:success] = "Merci d'avoir commandé sur notre site! Un mail récapitulatif de votre commande vous a été envoyé"

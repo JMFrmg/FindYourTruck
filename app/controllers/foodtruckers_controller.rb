@@ -1,7 +1,7 @@
 class FoodtruckersController < ApplicationController
 
-  before_action :ensure_foodtrucker_login, only: [:edit, :update, :addphoto, :addaddress]
   before_action :ensure_right_foodtrucker_logged, only: [:edit, :update, :addphoto, :addaddress]
+  
 
   def index
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
@@ -30,7 +30,7 @@ class FoodtruckersController < ApplicationController
   
 
   def edit
-    @foodtrucker = Foodtrucker.find(params[:id])
+    @foodtrucker = get_foodtrucker("id")
     if !@foodtrucker.menu
       @foodtrucker.menu = Menu.create
     end
@@ -63,7 +63,7 @@ class FoodtruckersController < ApplicationController
   def addaddress
     @address = Street.new
     @address.address = params[:address]
-    @address.foodtrucker = Foodtrucker.find(params[:id])
+    @address.foodtrucker = get_foodtrucker("id")
     @address.save
     redirect_to edit_foodtrucker_path
   end
@@ -71,17 +71,17 @@ class FoodtruckersController < ApplicationController
   def beactual
     if actual?
       flash[:notice] = "Vous êtes déjà disponible à une autre adresse"
-      redirect_to edit_foodtrucker_path(Foodtrucker.find(params[:foodtrucker_id]))
+      redirect_to edit_foodtrucker_path(get_foodtrucker("foodtrucker_id"))
     else
       @street = Street.find(params[:id])
       @street.actual = true
       @street.save
-      redirect_to edit_foodtrucker_path(Foodtrucker.find(params[:foodtrucker_id]))
+      redirect_to edit_foodtrucker_path(get_foodtrucker("foodtrucker_id"))
     end
   end
 
   def beunactual
-    @foodtruckers = Foodtrucker.find(params[:id])
+    @foodtruckers = get_foodtrucker("id")
     @streets = @foodtruckers.streetadresses
     @streets.each do |street|
       street.actual = false
@@ -91,7 +91,7 @@ class FoodtruckersController < ApplicationController
   end
 
   def updatemenu
-    @menu = Foodtrucker.find(params[:id]).menu
+    @menu = get_foodtrucker("id").menu
     @menu.update(params.permit(:name, :image))
     redirect_to edit_foodtrucker_path
   end
@@ -159,9 +159,6 @@ class FoodtruckersController < ApplicationController
     params.require(:photo).permit(:image)
   end
 
-  def get_foodtrucker
-    Foodtrucker.find(params[:id])
-  end
 
   def actual?
     Foodtrucker.find(params[:foodtrucker_id]).streetadresses.each do |street|
