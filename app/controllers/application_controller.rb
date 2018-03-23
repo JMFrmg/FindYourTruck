@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
   def essentials_variables
     @foodtruckers = Foodtrucker.all
+    @dish = Dish.all
   end
 
   def get_foodtrucker(key)

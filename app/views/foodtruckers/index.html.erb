@@ -34,4 +34,9 @@ handler.buildMap({ internal: {id: 'one_marker'}}, function(){
             handler.fitMapToBounds();
 						handler.getMap().setZoom(14);
 });
+
+Gmaps.map.callback = function() {
+   google.maps.event.addListenerOnce(Gmaps.map.map.serviceObject, 'idle', function(){
+   }
+)};
 </script>
