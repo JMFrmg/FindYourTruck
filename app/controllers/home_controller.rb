@@ -6,10 +6,11 @@ class HomeController < ApplicationController
 	end
   	@foodtruckers = Foodtrucker.all
     @streetadresses = Street.all
+    @photos = Photo.all
   end
 
   def show
-  	if user_logged_in?    
+  	if user_logged_in?
       if !current_user.cart
     	  @cart = Cart.new(name:"Ma commande")
     	  current_user.cart = @cart
@@ -25,7 +26,7 @@ class HomeController < ApplicationController
   end
 
   def add_to_favorites
-    if !current_user.favorites.include?(get_foodtrucker) 
+    if !current_user.favorites.include?(get_foodtrucker)
       current_user.favorites << get_foodtrucker
       flash[:notice] = "Le foodtruck a été ajouté à vos favoris!"
       redirect_to showfoodtrucker_path(get_foodtrucker)
@@ -43,7 +44,7 @@ class HomeController < ApplicationController
 private
   def get_foodtrucker
     Foodtrucker.find(params[:id])
-  end  
+  end
 
-  
+
 end
