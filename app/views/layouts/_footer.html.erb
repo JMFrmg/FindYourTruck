@@ -11,7 +11,6 @@
                     </div><!--col-->
                     <div class="col-md-3 col-sm-6 margin30">
                       <h3>Derniers ajouts</h3>
-                      <% @dish = Dish.all %>
                       <% @dish.last(4).each do |f| %>
                       <ul class="list-unstyled footer-news">
                           <li>
@@ -22,7 +21,6 @@
                       </div><!--col-->
                       <div class="col-md-3 col-sm-6 margin30">
                         <h3>Derniers Trucks Inscris</h3>
-                        <% @foodtruckers = Foodtrucker.all %>
                         <% @foodtruckers.last(4).each do |f| %>
                         <ul class="list-unstyled footer-news">
                             <li>

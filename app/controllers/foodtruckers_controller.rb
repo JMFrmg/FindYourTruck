@@ -7,7 +7,7 @@ class FoodtruckersController < ApplicationController
     @foodtrucker = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"])
     @street = Foodtrucker.where(["username LIKE ?","%#{params[:search]}%"]).first.streetadresses.where(actual: true)
     @hash = Gmaps4rails.build_markers @street do |street, marker|
-      user_path = view_context.link_to street.foodtrucker.username.capitalize, showfoodtrucker_path(street.foodtrucker)
+      user_path = showfoodtrucker_path(street.foodtrucker)
       marker.lat street.latitude
       marker.lng street.longitude
       marker.infowindow "<b>#{user_path}</b>"
