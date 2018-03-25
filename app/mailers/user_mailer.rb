@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
         mail(
             delivery_method_options: { api_key: ENV['MAILJET_API_KEY'], secret_key: ENV['MAILJET_SECRET_KEY'], port: '25' },
             from: "findyourtruck@gmx.fr",
-            to: @user.email,
+            to: follower.email,
             subject: "Un de vos foodtrucks préférés est en ligne!")
     end
 end

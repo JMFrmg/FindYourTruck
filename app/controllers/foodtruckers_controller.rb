@@ -98,7 +98,7 @@ class FoodtruckersController < ApplicationController
       @street.save
       @foodtrucker = @street.foodtrucker
       @street.foodtrucker.users.each do |follower|
-        UserMailer.actual_email(follower, @foodtrucker).deliver_now
+        UserMailer.actual_email(follower, @foodtrucker).deliver_now if !follower.nil?
       end
       redirect_to edit_foodtrucker_path(get_foodtrucker("foodtrucker_id"))
     end

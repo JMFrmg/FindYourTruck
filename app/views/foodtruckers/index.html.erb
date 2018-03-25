@@ -9,6 +9,7 @@
 		<td><%= f.username %></td>
 		<td><%= f.postalcode %></td>
 		<td><%= f.streetadresses.where(actual: true).last.address %></td>
+		<td><%= link_to "Page du foodtrucker", showfoodtrucker_path(f) %></td>
 	</tr>
 	<% end %>
 </table>
