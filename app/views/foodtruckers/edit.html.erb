@@ -325,20 +325,21 @@
 
 		<% @photos.each do |photo| %>
 
-		<div class="project-post photography web-design">
+		<div class="project-post photography web-design col-md-3">
             <div class="item-img-wrap ">
-	            <div><%= image_tag photo.image.url, :class => "img-responsive" %></div>
+	            <div><%= image_tag photo.image.url, :size => "300x300"%></div>
 	   			<div class="work-desc">
                 <span><%= link_to content_tag(:i, nil, class: "fa fa-trash") + 'Supprimer' , removephoto_path(photo, foodtrucker_id: @foodtrucker.id), method: :post, class: "btn btn-danger btn-ico btn-lg" %></span>
-                </div><!--work desc-->   		
-	
-    	<% end %>   
+                </div><!--work desc-->
+                </div>
+              </div>
+    <% end %>   
 	<% end %>
 				</div>
-        	</div><!--project post-->
-    	</div>
-    </div>
+    </div><!--project post-->
 </div><!--container-->
+
+
 
 <div class="breadcrumb-wrap"></div>
 

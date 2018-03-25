@@ -29,12 +29,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                      <i class="icon-append fa fa-compass"></i>
-                                      <%= f.label "Code postal" %>
-                                      <%= f.text_field :postalcode, autocomplete: "postalcode", placeholder: "ex: 67000 ", class: "form-control"  %>
-                                    </div>
-
-                                    <div class="form-group">
                                       <i class="icon-append fa fa-lock"></i>
                                       <%= f.label "Mot de passe" %>
                                       <%= f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length} caractères minimum", class: "form-control" %>   
