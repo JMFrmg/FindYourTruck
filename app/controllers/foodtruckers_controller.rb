@@ -96,6 +96,10 @@ class FoodtruckersController < ApplicationController
       @street = Street.find(params[:id])
       @street.actual = true
       @street.save
+      @foodtrucker = @street.foodtrucker
+      @street.foodtrucker.users.each do |follower|
+        UserMailer.actual_email(follower, @foodtrucker).deliver_now
+      end
       redirect_to edit_foodtrucker_path(get_foodtrucker("foodtrucker_id"))
     end
   end

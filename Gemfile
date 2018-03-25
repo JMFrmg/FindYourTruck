@@ -35,7 +35,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails'
   gem 'selenium-webdriver'
-  gem 'dotenv-rails'
+  gem 'dotenv'
 end
 
 group :development do

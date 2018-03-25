@@ -5,22 +5,52 @@
   </head>
   <body>
     <h1>Merci d'avoir commandé sur notre site <%= @user.username %></h1>
-    <p>
+    <h2>
       Voici le récapitulatif de votre commande :
-    </p>
-    <p>Vous avez commandé chez <%= @foodtruck.username %>
-    <table>
-
-      <% @dishes.each do |dish| %> 
-
-      <tr>
-        <td><%= dish.name %></td>
-        <td><%= dish.composition %></td>
-        <td><%= dish.price %></td>
-        
-      </tr>
-      <% end %>
-    </table>
+    </h2>
+    <h2>Vous avez commandé chez <%= @foodtruck.username %>
+    <% if !@cart.dishes.nil? %>
+      <h3>Plats :</h3>
+      <table>
+        <% @cart.dishes.each do |dish| %> 
+        <tr>
+          <td><%= dish.name %></td>
+          <td><%= dish.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% elsif !@cart.sidedishes.nil? %>
+      <h3>Accompagnements :</h3>
+      <table>
+        <% @cart.sidedishes.each do |sidedish| %> 
+        <tr>
+          <td><%= sidedish.name %></td>
+          <td><%= sidedish.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% elsif !@cart.deserts.nil? %>
+      <h3>Desserts :</h3>
+      <table>
+        <% @cart.deserts.each do |desert| %> 
+        <tr>
+          <td><%= desert.name %></td>
+          <td><%= desert.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% elsif !@cart.drinks.nil? %>
+      <h3>Boissons :</h3>
+      <table>
+        <% @cart.drinks.each do |drink| %> 
+        <tr>
+          <td><%= drink.name %></td>
+          <td><%= drink.price %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <p>Montant total de votre commande : <%=@sum%> euros</p>
     <br />
     <h2>A bientôt <%= @user.username %> !</h2>
   </body>
