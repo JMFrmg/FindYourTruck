@@ -18,7 +18,6 @@
                     <% if user_signed_in? %>
                     <li><%= link_to "Profil", edit_user_registration_path %></li>
                     <li><%= link_to content_tag(:i, nil, class: 'pe-7s-user') + " Deconnexion ", destroy_user_session_path, :method => :delete %></li>
-                    <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
                     <% elsif foodtrucker_signed_in? %>
                     <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#profil">Profil</button></li>
                     <li><%= link_to content_tag(:i, nil, class: 'pe-7s-user') + " Deconnexion ", destroy_foodtrucker_session_path, :method => :delete %></li>
