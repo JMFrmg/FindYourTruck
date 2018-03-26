@@ -23,9 +23,6 @@ ActiveRecord::Schema.define(version: 20180326103428) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "failed_attempts", default: 0
-    t.string "unlock_token"
-    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
@@ -60,6 +57,8 @@ ActiveRecord::Schema.define(version: 20180326103428) do
   create_table "carts_drinks", id: false, force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "drink_id", null: false
+    t.index ["cart_id", "drink_id"], name: "index_carts_drinks_on_cart_id_and_drink_id"
+    t.index ["drink_id", "cart_id"], name: "index_carts_drinks_on_drink_id_and_cart_id"
   end
 
   create_table "carts_sidedishes", id: false, force: :cascade do |t|
@@ -103,6 +102,8 @@ ActiveRecord::Schema.define(version: 20180326103428) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "username"
     t.integer "postalcode"
     t.string "avatar_file_name"
@@ -121,7 +122,7 @@ ActiveRecord::Schema.define(version: 20180326103428) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name", default: "Menu non communiqué"
+    t.string "name"
     t.string "picture"
     t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"

@@ -11,10 +11,10 @@ User.create(email:"alfred.duverger@gmail.com", username:"alfred", postalcode:"67
 User.create(email:"xavier.leboucher@gmail.com", username:"xavier", postalcode:"67000", password:"xavierleboucher", password_confirmation:"xavierleboucher")
 User.create(email:"edouard.lachaise@gmail.com", username:"edouard", postalcode:"67000", password:"edouardlachaise", password_confirmation:"edouardlachaise")
 
-Foodtrucker.create(email:"simon.pierre@gmail.com", username:"simonpierre", postalcode:"67000", password:"simonpierre", password_confirmation:"simonpierre")
-Foodtrucker.create(email:"jacques.le.majeur@gmail.com", username:"jacqueslemajeur", postalcode:"67000", password:"jacqueslemajeur", password_confirmation:"jacqueslemajeur")
+Foodtrucker.create(email:"simon.pierre@gmail.com", username:"Simon Lierre", postalcode:"67000", password:"simonpierre", password_confirmation:"simonpierre")
+Foodtrucker.create(email:"jacques.le.majeur@gmail.com", username:"jacques Lemajeur", postalcode:"67000", password:"jacqueslemajeur", password_confirmation:"jacqueslemajeur")
 Foodtrucker.create(email:"philippe@gmail.com", username:"philippe", postalcode:"67000", password:"philippe", password_confirmation:"philippe")
-Foodtrucker.create(email:"simon.le.zelote@gmail.com", username:"simonlezelote", postalcode:"67000", password:"simonlezelote", password_confirmation:"simonlezelote")
+Foodtrucker.create(email:"simon.le.zelote@gmail.com", username:"simon Lezelote", postalcode:"67000", password:"simonlezelote", password_confirmation:"simonlezelote")
 
 Street.create(address:"7 place Brooglie, Strasbourg, France", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"1")
 Street.create(address:"12 avenue de la paix, Strasbourg, France", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"1")

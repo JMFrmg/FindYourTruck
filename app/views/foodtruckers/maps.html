@@ -1,4 +1,17 @@
-
+<div class="panel panel-default">
+<table class="table">
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @foodtrucker.each do |f| %>
+	<tr>
+		<td><p>   <b><%= f.username.capitalize %></b>    </p></td>
+		<td><%= link_to "Page du foodtrucker", showfoodtrucker_path(f), :class => "btn btn-theme-bg btn-md" %></td>
+	</tr>
+	<% end %>
+</table>
+</div>
 
 "<div class='media'><div class='media-left'><img class='media-object' src='" + json.picture.url + "'></div>" + "<div class='media-body'><h4 class='media-heading'>" + "<li><a>" + json.infowindow + "</a></li>" + "</h4><p>hey hey hey</p></div></div>"
 
