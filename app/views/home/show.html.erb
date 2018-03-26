@@ -6,12 +6,6 @@
                     <div class="col-sm-6">
                         <h4>Vos Foodtrucks</h4>
                     </div>
-                    <div class="col-sm-6 hidden-xs text-right">
-                        <ol class="breadcrumb">
-                            <li><a href="index.html">Accueils</a></li>
-                            <li>Vos Foodtrucks</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -19,121 +13,163 @@
         <div class="container">
             <div class="row">
               <div class="col-md-6 margin20">
-                  <h3 class="heading"><%= @foodtrucker.username %></h3>
-                  <p><%= link_to 'Ajouter à mes favoris!', addfavorite_path(@foodtrucker), method: :post, class: "btn btn-theme-bg btn-sm" %></p>
-                  <p>
-                      <%= @menu.name %>
-                  </p>
-                  <p><a href="#" class="btn btn-theme-bg">Nous contacter</a></p>
+                  <h3 class="heading">La page de <%= @foodtrucker.username %></h3>
+                  <div> <p><strong>Description de la cuisine proposée:</strong><br/> <%= @menu.name %></p></div>
+                  <div class="divide80"></div>
+                  <div class="divide80"></div>
+                  
+                  <div class="pull-right">Notre camion vous plait?
+                        <%= link_to 'Ajouter à mes favoris!', addfavorite_path(@foodtrucker), method: :post, class: "btn btn-theme-bg btn-sm" %>
+                  </div>
               </div>
+
               <div class="col-md-6">
+                <% if @foodtrucker.avatar.url == "logo.png" %>
                   <%= image_tag("truck.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
+                <% else %>
+                  <%= image_tag (@foodtrucker.avatar.url( :alt => "", :size => "500x500")) %>
+                  <% end %>
               </div>
-
-                </div>
-
             </div>
+
         </div>
         <div class="divide60"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="heading">Nos plats</h3>
-                </div>
-            </div>
-            <!-- <div class="row special-feature"> -->
-                <div class="col-md-3 col-sm-6 margin20">
 
-                    <div class="s-feature-box text-center">
 
-                        <div class="mask-top">
 
-                          <div class="col-md-6">
-                              <%= image_tag("burger.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="heading">Notre menu</h3>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag("burger.jpg", :alt => "", :size => "200x200", :class => "img-responsive") %>
+        </div>
+        <div class="col-md-9">  <!-- Div plat -->
+          <table class="table table-hover">
+            <thead>
+              <h3 class="heading">Les plats</h3>
+                <tr>
+                    <th>Nom</th>
+                    <th>composition</th>
+                    <th>prix</th>
+                    <th></th>
+                </tr>
+                </thead>
+        
+          <% @dishes.each do |dish| %>
+            <tr>
+              <td><%= dish.name %></td>
+              <td><%= dish.composition %></td>
+              <td><%= dish.price.to_s + "€"%></td>
+              <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", addtocart_path(dish), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div> <!-- end Div plat -->
+  </div>
+</div>
+    <div class="divide20"><hr></div>
+<div class="container">
+    <div class="row">    
+    <div class="col-md-12">
+      <div class="col-md-4">
+      <table class="table table-hover">
+        <thead>
+         <h3 class="heading">Accompagnement</h3>
+           <tr>
+              <th>Nom</th>
+              <th>prix</th>
+              <th></th>
+           </tr>
+          </thead>
+        
+        <% @foodtrucker.menu.sidedishes.each do |sidedish| %>
+        <tr>
+          <td><%= sidedish.name %></td>
+          <td><%= sidedish.price.to_s + "€"%></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-2">
+      <div><%= image_tag("dogs.jpg", :alt => "", :size => "100x100", :class => "img-responsive") %></div>
+    </div>
+    <div class="col-md-2">
+      <div class="divide40"></div>
+      <div><%= image_tag("coke.jpg", :alt => "", :size => "100x100", :class => "img-responsive") %></div>
+    </div>
+    <div class="col-md-4">
+      <table class="table table-hover">
+        <thead>
+         <h3 class="heading">Boisson</h3>
+           <tr>
+              <th>Nom</th>
+              <th>prix</th>
+              <th></th>
+           </tr>
+          </thead>
+        
+        <% @foodtrucker.menu.drinks.each do |drink| %>
+        <tr>
+          <td><%= drink.name %></td>
+          <td><%= drink.price.to_s + "€"%></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+    <div class="divide20"><hr></div>
+<div class="container">
+    <div class="row">  
+
+        <div class="col-md-9"> <!-- Div dessert -->
+      <table class="table table-hover">
+        <thead>
+         <h3 class="heading">Dessert</h3>
+           <tr>
+              <th>Nom</th>
+              <th>description</th>
+              <th>prix</th>
+              <th></th>
+           </tr>
+          </thead>
+        
+        <% @foodtrucker.menu.deserts.each do |desert| %>
+        <tr>
+          <td><%= desert.name %></td>
+          <td><%= desert.description %></td>
+          <td><%= desert.price.to_s + "€"%></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+        <div class="col-md-3">
+          <%= image_tag("sweety.jpg", :alt => "", :size => "200x200", :class => "img-responsive") %>
+        </div>                      
+  </div>
+</div>
+
+ <div class="divide20"><hr></div>
+
+<div class="modal fade" id="pannier" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Mon panier</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                           </div>
-
-                            <h4>Hamburger</h4>
-
-                            <table>
-                            <tr>
-                                <th>Nom du plat</th>
-                                <th>Composition</th>
-                            </tr>
-                            <% @dishes.each do |dish| %>
-                            <tr>
-                                <td><%= dish.name %></td>
-                                <td><%= dish.composition %></td>
-                                <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", addtocart_path(dish), method: :post, class: "btn btn-skin btn-lg" %></td>
-                            </tr>
-                            <% end %>
-                            </table>
-
-                        </div>
-                        <div class="mask-bottom">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-3 col-sm-6 margin20">
-                    <div class="s-feature-box text-center">
-                        <div class="mask-top">
-
-                          <div class="col-md-6">
-                              <%= image_tag("dogs.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
-                          </div>
-
-                            <h4>Hots dogs</h4>
-                            <p>Classique</p></br>
-                            <p>Double</p></br>
-                            <p>Danois</p></br>
-                            <p>Végé</p></br>
-                        </div>
-                        <div class="mask-bottom">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 margin20">
-                    <div class="s-feature-box text-center">
-                        <div class="mask-top">
-                          <div class="col-md-6">
-                              <%= image_tag("coke.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
-                          </div>
-
-                            <h4>Boissons</h4>
-                            <p>Coca</p></br>
-                            <p>Perrier</p></br>
-                            <p>Ice Tea</p></br>
-                            <p>Fanta</p></br>
-                        </div>
-                        <div class="mask-bottom">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 margin20">
-                    <div class="s-feature-box text-center">
-                        <div class="mask-top">
-
-                        </div>
-                        <div class="mask-bottom">
-                          <div class="col-md-6">
-                              <%= image_tag("sweety.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
-                          </div>
-
-                            <h4>Desserts</h4>
-                            <p>Tiramisu</p></br>
-                            <p>Glaces Magnum</p></br>
-                            <p>Muffins</p></br>
-                            <p>Part de tarte</p></br>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 margin20">
-                    <div class="s-feature-box text-center">
-                        <div class="mask-top">
-                            <table>
-                            <% @cart.dishes.each do |dish| %>
+                          <div class="modal-body">
+                            <table class="table table-striped">
+                      <% @cart.dishes.each do |dish| %>
+                          
                             <tr>
                                 <td><%= dish.name %></td>
                                 <td><%= dish.price %></td>
@@ -163,26 +199,37 @@
                                       data-currency="eur"
                                       data-locale="auto"></script>
                             <% end %>
+                        </div>                                                        
+                          </div>
                         </div>
-                        <div class="mask-bottom">
-                          
-                    </div>
-                </div>
-            </div>
+                      </div>
+
+ <div class="center">                       
+ <button type="button" class="btn btn-theme-bg btn-sm" data-toggle="modal" data-target="#pannier"><%= content_tag(:i,nil, class: "fa fa-shopping-cart")%>Mon panier <pan><%=@sumprices%> €</pan></button>
+</div>
+
+ <hr>
             <div class="divide70"></div>
-            <div>
-              <table>
+
+          <div>   
+            
+              <div class="col-md-8">
+                <% if @posts.first %>
+              <table class="table table-striped">
                 <% @posts.each do |post| %>
                 <tr>
                   <td><%= post.content %></td>
-                  <td>Posté le : <%= post.created_at %> par : <%=post.user.username%></td>
-                  <td><%= link_to like_post_path(post), method: :put do %>  Upvote : <%= post.get_upvotes.size %><% end %></td>
-                  <td><%= link_to dislike_post_path(post), method: :put do %>   / Downvote : <%= post.get_downvotes.size %><% end %></td>
+                  <td>Posté le : <%= post.created_at.strftime("%d/%m/%Y à %HH%M") %></td>
+                  <td>par : <%=post.user.username%></td>
                 </tr>
                 <% end %>
               </table>
+              <% else %>
+                <h3 class="center">Il n'y a pas encore de commentaires, soyez le premier</h3>
+              <% end %>
             </div>
 
+          <div class="col-md-4">
             <%= form_tag (posts_path(foodtrucker_id: @foodtrucker.id)) do %>
  
               <% if @post.errors.any? %>
@@ -198,15 +245,16 @@
                   </ul>
                 </div>
               <% end %>
-              
-              <%= label_tag 'text', 'Votre avis :' %>
-              <%= text_field_tag 'content' %>
-              <%= submit_tag 'Poster!' %>
+
+                     <div class="form-group">  
+                        <%= label_tag 'text', 'Votre avis nous intéresse :' %><br/>
+                        <%= text_area_tag 'content',nil, :size => "50%" %>
+                        <%= submit_tag 'Poster', class: "btn btn-theme-bg btn-sm pull-right",style:'color:#FFFFFF'%>
+                     </div>
             <% end %>
-
-            <div class="row">
-
-                </div><!--services col-->
-            </div><!--services row-->
-        </div><!--.container-->
-        <div class="divide60"></div>
+          
+        </div>
+      </div>
+      <hr>
+        <div class="divide80"></div>
+<div class="breadcrumb-wrap"></div>
