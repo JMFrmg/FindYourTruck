@@ -23,9 +23,6 @@ ActiveRecord::Schema.define(version: 20180322231616) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "failed_attempts", default: 0
-    t.string "unlock_token"
-    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
@@ -84,6 +81,8 @@ ActiveRecord::Schema.define(version: 20180322231616) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "username"
     t.integer "postalcode"
     t.string "avatar_file_name"
@@ -102,7 +101,7 @@ ActiveRecord::Schema.define(version: 20180322231616) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name", default: "Menu non communiqué"
+    t.string "name"
     t.string "picture"
     t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"

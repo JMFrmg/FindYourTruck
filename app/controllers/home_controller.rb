@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :ensure_user_login, only: [:add_to_favorites, :delete_favorite]
+
   def index
   	if user_logged_in? && current_user.cart
 	  	current_user.cart.destroy
@@ -29,7 +30,7 @@ class HomeController < ApplicationController
   end
 
   def add_to_favorites
-    if !current_user.favorites.include?(get_foodtrucker("id")) 
+    if !current_user.favorites.include?(get_foodtrucker("id"))
       current_user.favorites << get_foodtrucker("id")
       flash[:notice] = "Le foodtruck a été ajouté à vos favoris!"
       redirect_to showfoodtrucker_path(get_foodtrucker("id"))
@@ -44,7 +45,10 @@ class HomeController < ApplicationController
     redirect_to edit_user_registration_path(get_foodtrucker("id"))
   end
 
-private
+  private
 
+  def foodtrucker_params
+    params.require(:foodtrucker).permit(:username, :email, :postalcode)
+  end
 
 end

@@ -31,7 +31,6 @@
               </div>
 
                 </div>
-
             </div>
         </div>
         <div class="divide60"></div>
@@ -165,7 +164,7 @@
                             <% end %>
                         </div>
                         <div class="mask-bottom">
-                          
+
                     </div>
                 </div>
             </div>
@@ -184,7 +183,7 @@
             </div>
 
             <%= form_tag (posts_path(foodtrucker_id: @foodtrucker.id)) do %>
- 
+
               <% if @post.errors.any? %>
                 <div id="error_explanation">
                   <h2>
@@ -198,7 +197,7 @@
                   </ul>
                 </div>
               <% end %>
-              
+
               <%= label_tag 'text', 'Votre avis :' %>
               <%= text_field_tag 'content' %>
               <%= submit_tag 'Poster!' %>

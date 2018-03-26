@@ -25,7 +25,7 @@ Street.create(address:"35 rue Boecklin, Strasbourg, France", postalcode:"67000",
 Street.create(address:"24 allee des Comtes, Strasbourg, France", postalcode:"67200", city:"Strasbourg", foodtrucker_id:"2",actual: true)
 Street.create(address:"44 boulevard de la Marne, Strasbourg, France", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"3",actual: true)
 Street.create(address:"24 avenue Aristide Briand, Strasbourg, France", postalcode:"67100", city:"Strasbourg", foodtrucker_id:"3")
-Street.create(address:"16 place Brooglie, Strasbourg, France", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"4")
+Street.create(address:"16 place Brooglie, Strasbourg, France", postalcode:"67000", city:"Strasbourg", foodtrucker_id:"4", actual: true)
 
 Admin.create(email:"matthieu.colombert@gmail.com", username:"matthieu", postalcode:"67000", password:"matthieu", password_confirmation:"matthieu")
 
