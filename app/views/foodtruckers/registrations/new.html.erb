@@ -17,6 +17,12 @@
                    
                     <form>
                                     <div class="form-group">
+                                      <i class="icon-append fa fa-camera"></i>
+                                      <%= f.label "Photo de profil "%> <i>(image utilisée pour la page du foodtruck)</i>
+                                      <%= f.file_field :avatar %>
+                                    </div>
+
+                                    <div class="form-group">
                                       <i class="icon-append fa fa-user"></i>
                                       <%= f.label "Nom du Foodtruck" %>
                                       <%= f.text_field :username, autocomplete: "username", placeholder: "ex: burger & co", class: "form-control" %>                           
