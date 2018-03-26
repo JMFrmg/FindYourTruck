@@ -40,6 +40,12 @@ Rails.application.routes.draw do
 
   post 'carts/adddish/:id', to: 'carts#adddish', as: 'addtocart'
   post 'carts/removedish/:id', to: 'carts#removedish', as: 'removedish'
+  post 'carts/addsidedish/:id', to: 'carts#addsidedish', as: 'addsidedishtocart'
+  post 'carts/removesidedish/:id', to: 'carts#removesidedish', as: 'removesidedishfromcart'
+  post 'carts/adddesert/:id', to: 'carts#adddesert', as: 'adddeserttocart'
+  post 'carts/removedesert/:id', to: 'carts#removedesert', as: 'removedesertfromcart'
+  post 'carts/adddrink/:id', to: 'carts#adddrink', as: 'adddrinktocart'
+  post 'carts/removedrink/:id', to: 'carts#removedrink', as: 'removedrinkfromcart'
   post 'carts/buy/:id', to: 'carts#buy', as: 'buycart'
 
   get 'admins/index', to: 'admins#index', as: 'adminsindex'
