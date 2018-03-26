@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
     	@user, @cart, @sum, @foodtruck = user, cart, sum, foodtruck
         Dotenv.load
 		mail(
-    		delivery_method_options: { api_key: '2f48b7b5331c5aaae12ea4e8b073c22f', secret_key: 'f20ab8630b031fc7fbd7ea6b64fc93e1', port: '25' },
+    		delivery_method_options: { api_key: '', secret_key: '', port: '25' },
     		from: "findyourtruck@gmx.fr",
     		to: @user.email,
     		subject: 'Détails de votre commande')
@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
         @foodtrucker = foodtrucker
         Dotenv.load
         mail(
-            delivery_method_options: { api_key: '2f48b7b5331c5aaae12ea4e8b073c22f', secret_key: 'f20ab8630b031fc7fbd7ea6b64fc93e1', port: '25' },
+            delivery_method_options: { api_key: '', secret_key: '', port: '25' },
             from: "findyourtruck@gmx.fr",
             to: follower.email,
             subject: "Un de vos foodtrucks préférés est en ligne!")
