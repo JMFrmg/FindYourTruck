@@ -27,7 +27,7 @@
                 <% if @foodtrucker.avatar.url == "logo.png" %>
                   <%= image_tag("truck.jpg", :alt => "", :size => "500x500", :class => "img-responsive") %>
                 <% else %>
-                  <%= image_tag (@foodtrucker.avatar.url( :alt => "", :size => "500x500")) %>
+                  <%= image_tag @foodtrucker.avatar.url(:large) %>
                   <% end %>
               </div>
             </div>
@@ -88,17 +88,16 @@
         <tr>
           <td><%= sidedish.name %></td>
           <td><%= sidedish.price.to_s + "€"%></td>
-          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier",addsidedishtocart_path(sidedish), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
         </tr>
         <% end %>
       </table>
     </div>
     <div class="col-md-2">
-      <div><%= image_tag("dogs.jpg", :alt => "", :size => "100x100", :class => "img-responsive") %></div>
+      <div><%= image_tag("frites.jpg", :alt => "", :size => "150x150", :class => "img-responsive") %></div>
     </div>
     <div class="col-md-2">
-      <div class="divide40"></div>
-      <div><%= image_tag("coke.jpg", :alt => "", :size => "100x100", :class => "img-responsive") %></div>
+      <div><%= image_tag("coke.jpg", :alt => "", :size => "150x150", :class => "img-responsive") %></div>
     </div>
     <div class="col-md-4">
       <table class="table table-hover">
@@ -115,7 +114,7 @@
         <tr>
           <td><%= drink.name %></td>
           <td><%= drink.price.to_s + "€"%></td>
-          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier",adddrinktocart_path(drink), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
         </tr>
         <% end %>
       </table>
@@ -144,7 +143,7 @@
           <td><%= desert.name %></td>
           <td><%= desert.description %></td>
           <td><%= desert.price.to_s + "€"%></td>
-          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier", method: :post, class: "btn btn-theme-bg btn-sm" %></td>
+          <td><%= link_to content_tag(:i,nil, class: "fa fa-shopping-cart") + "Ajouter au panier",adddeserttocart_path(desert), method: :post, class: "btn btn-theme-bg btn-sm" %></td>
         </tr>
         <% end %>
       </table>
@@ -155,7 +154,7 @@
   </div>
 </div>
 
- <div class="divide20"><hr></div>
+ <div class="divide20"></div>
 
 <div class="modal fade" id="pannier" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -172,12 +171,42 @@
                           
                             <tr>
                                 <td><%= dish.name %></td>
-                                <td><%= dish.price %></td>
-                                <td class='product-delete'><%= link_to "Supprimer du panier", removedish_path(dish), method: :post, :class => "btn btn-danger btn-xm" %></td>
+                                <td><%= dish.price %> €</td>
+                                <td class='product-delete'><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedish_path(dish), method: :post, :class => "btn btn-danger btn-ico" %></td>
                                 <% @sumprices += dish.price %>
                             </tr>
                             <% end %>
-                            </table>
+
+                      <% @cart.sidedishes.each do |sidedish| %>
+
+                            <tr>
+                                <td><%= sidedish.name %></td>
+                                <td><%= sidedish.price %> €</td>
+                                <td class='product-delete'><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removesidedishfromcart_path(sidedish), method: :post, :class => "btn btn-danger btn-ico" %></td>
+                                <% @sumprices += sidedish.price %>
+                            </tr>
+                            <% end %>
+
+                      <% @cart.drinks.each do |drink| %>
+                          
+                            <tr>
+                                <td><%= drink.name %></td>
+                                <td><%= drink.price %> €</td>
+                                <td class='product-delete'><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedrinkfromcart_path(drink), method: :post, :class => "btn btn-danger btn-ico" %></td>
+                                <% @sumprices += drink.price %>
+                            </tr>
+                            <% end %>
+
+                      <% @cart.deserts.each do |desert| %>
+                          
+                            <tr>
+                                <td><%= desert.name %></td>
+                                <td><%= desert.price %> €</td>
+                                <td class='product-delete'><%= link_to content_tag(:i, nil, class: "fa fa-trash"), removedesertfromcart_path(desert), method: :post, :class => "btn btn-danger btn-ico" %></td>
+                                <% @sumprices += desert.price %>
+                            </tr>
+                            <% end %>
+                            </table>                                                        
                             <tr>
                             <td>Total</td>
                             <td class="total"><%=@sumprices%></td>
@@ -211,7 +240,29 @@
  <hr>
 
             <div class="divide70"></div>
+<div class="container">
+    <div class="row">
+        <div class="portfolio-box iso-call col-3-space">
+  <% if @foodtrucker.photos.first %>
+            <h3> Quelques photos </h3>
 
+    <% @foodtrucker.photos.each do |photo| %>
+
+    <div class="project-post photography web-design col-md-3">
+            <div class="item-img-wrap ">
+              <div><%= image_tag photo.image.url, :size => "300x300"%></div>
+                </div>
+              </div>
+    <% end %>  
+    <hr> 
+  <% end %>
+        </div>
+    </div><!--project post-->
+</div><!--container-->
+
+ 
+
+            <div class="divide70"></div>
           <div>   
             
               <div class="col-md-8">

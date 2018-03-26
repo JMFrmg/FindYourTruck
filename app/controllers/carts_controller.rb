@@ -17,7 +17,7 @@ class CartsController < ApplicationController
 
    def addsidedish
     @cart = current_cart
-    @sidedish = SideDish.find(params[:id])
+    @sidedish = Sidedish.find(params[:id])
     @cart.sidedishes << @sidedish
     redirect_to showfoodtrucker_path(@sidedish.menu.foodtrucker)
   end
@@ -25,21 +25,21 @@ class CartsController < ApplicationController
   def removesidedish
     @cart = current_cart
     @sidedish = Sidedish.find(params[:id])
-    @cart.sidedishes.delete(@dish)
+    @cart.sidedishes.delete(@sidedish)
     redirect_to showfoodtrucker_path(@sidedish.menu.foodtrucker)
   end
 
    def adddrink
     @cart = current_cart
     @drink = Drink.find(params[:id])
-    @cart.drinks << @sidedish
+    @cart.drinks << @drink
     redirect_to showfoodtrucker_path(@drink.menu.foodtrucker)
   end
 
   def removedrink
     @cart = current_cart
     @drink = Drink.find(params[:id])
-    @cart.drinks.delete(@sidedish)
+    @cart.drinks.delete(@drink)
     redirect_to showfoodtrucker_path(@drink.menu.foodtrucker)
   end
 

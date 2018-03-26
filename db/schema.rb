@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322231616) do
+ActiveRecord::Schema.define(version: 20180326103428) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20180322231616) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
@@ -40,11 +43,30 @@ ActiveRecord::Schema.define(version: 20180322231616) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "carts_deserts", id: false, force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "desert_id", null: false
+    t.index ["cart_id", "desert_id"], name: "index_carts_deserts_on_cart_id_and_desert_id"
+    t.index ["desert_id", "cart_id"], name: "index_carts_deserts_on_desert_id_and_cart_id"
+  end
+
   create_table "carts_dishes", id: false, force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "dish_id", null: false
     t.index ["cart_id", "dish_id"], name: "index_carts_dishes_on_cart_id_and_dish_id"
     t.index ["dish_id", "cart_id"], name: "index_carts_dishes_on_dish_id_and_cart_id"
+  end
+
+  create_table "carts_drinks", id: false, force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "drink_id", null: false
+  end
+
+  create_table "carts_sidedishes", id: false, force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "sidedish_id", null: false
+    t.index ["cart_id", "sidedish_id"], name: "index_carts_sidedishes_on_cart_id_and_sidedish_id"
+    t.index ["sidedish_id", "cart_id"], name: "index_carts_sidedishes_on_sidedish_id_and_cart_id"
   end
 
   create_table "deserts", force: :cascade do |t|
@@ -81,8 +103,6 @@ ActiveRecord::Schema.define(version: 20180322231616) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "username"
     t.integer "postalcode"
     t.string "avatar_file_name"
@@ -101,7 +121,7 @@ ActiveRecord::Schema.define(version: 20180322231616) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "Menu non communiqué"
     t.string "picture"
     t.integer "foodtrucker_id"
     t.index ["foodtrucker_id"], name: "index_menus_on_foodtrucker_id"
