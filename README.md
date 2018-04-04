@@ -1,24 +1,27 @@
-# README
+## Find Your Truck
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Projet : creer votre start-up et votre site en deux semaines
 
-Things you may want to cover:
+heroku : https://findyourtruckfr.herokuapp.com/
 
-* Ruby version
+## Fonctionalités
 
-* System dependencies
+# Pour un visiteur (non inscrit) 
 
-* Configuration
+* Peut rechercher un Foodtruck particulier ou découvrir les Foodtrucks a proximité avec la géolocalisation
+* Peut accéder à la page des foodtruckers : Visualiser son emplacement, son concept, son menu, ses photos
 
-* Database creation
+# Pour un foodtrucker (après inscription)
 
-* Database initialization
+* Ajouter une adresse d'emplacement et notifier si il est présent live ou non
+* Ajouter un avatar et des photos grâce à la gem paperclip
+* Ajouter plats, boissons, accompagnement et desserts
+* Editer son profil, supprimer son compte
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Pour un utilisateur inscrit
 
-* Deployment instructions
-
-* ...
+* Ajouter un foodtrick à ses favoris
+* Poster un commentaire
+* Passer commande et peut regler grâce à la gem stripe et reçoit un mail de confirmation de commande grâce à la gem mailjet
+* Editer son profil, supprimer son compte
